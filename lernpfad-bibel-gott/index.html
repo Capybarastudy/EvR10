@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lernpfad: Wie spricht die Bibel von Gott?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2E2347; --ink2:#4A3B6B; --violet:#6B4FA0; --lila:#F4F0FA; --gold:#F2A93B; --gold2:#FDF1DD;
+  --teal:#3E9C9E; --coral:#E46F5B; --green:#4E9A5B; --red:#C62828;
+  --sand:#F6EBD6; --sand2:#E9D3A8; --olive:#6E8B3D; --nt:#E5F1EC; --nt2:#3E8A6E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#EFE9DD}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);min-height:100vh;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;cursor:pointer}
+svg{fill:currentColor}
+
+/* Kopfleiste */
+.bar{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff;padding:10px 16px 12px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.bar .row{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bar .team{font-weight:800;font-size:15px;flex:1;min-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .team small{display:block;font-weight:600;color:#CFC6E4;font-size:11px;letter-spacing:.5px}
+.pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border-radius:999px;padding:6px 12px;font-weight:800;font-size:15px;border:none;color:#fff}
+.pill svg{width:16px;height:16px;color:var(--gold)}
+.pill.pts{background:var(--gold);color:var(--ink)} .pill.pts svg{color:var(--ink)}
+.prog{max-width:880px;margin:10px auto 0;display:flex;gap:4px}
+.prog span{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.15);transition:.3s}
+.prog span.done{background:var(--gold)} .prog span.now{background:#fff}
+.prog span.bonus{flex:.6} .prog span.bonus.done{background:#FFD978}
+.pop{position:fixed;left:50%;top:84px;transform:translateX(-50%) scale(.7);opacity:0;background:var(--gold);color:var(--ink);font-weight:800;padding:8px 18px;border-radius:999px;z-index:50;transition:.25s;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.pop.show{opacity:1;transform:translateX(-50%) scale(1)}
+
+/* Seite */
+.wrap{max-width:880px;margin:22px auto 60px;padding:0 16px}
+.page{background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(46,35,71,.14);padding:30px 34px;min-height:480px;animation:fade .4s ease;position:relative;overflow:hidden}
+.page.at{background:linear-gradient(180deg,var(--sand) 0,#fff 220px)}
+.page.nt{background:linear-gradient(180deg,var(--nt) 0,#fff 220px)}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (max-width:600px){.page{padding:22px 18px}}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--lila);color:var(--violet)}
+.kicker.at{background:var(--sand2);color:#7A4E12} .kicker.nt{background:#CDE6DB;color:#25624B} .kicker.bonus{background:#FFF2C4;color:#8A6400}
+.kicker svg{width:14px;height:14px}
+.shead{display:flex;gap:16px;align-items:center;margin:14px 0 4px}
+.shead .ic{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;color:#fff}
+.shead .ic svg{width:32px;height:32px}
+h1{font-size:29px;line-height:1.15;font-weight:800}
+.shead .sub{font-size:15px;font-weight:700;color:#7A6F96}
+h2{font-size:20px;margin:26px 0 8px;font-weight:800;display:flex;align-items:center;gap:10px}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 6px;border-radius:15px;background:var(--gold);font-size:14px}
+h2 .pt{margin-left:auto;font-size:12px;font-weight:800;color:#9A5B00;background:var(--gold2);padding:3px 10px;border-radius:999px;white-space:nowrap}
+h2 .pt.ok{background:#E8F4EA;color:var(--green)}
+p{font-size:17px;line-height:1.55;margin:8px 0}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 6px}
+.meta span{font-size:13px;font-weight:700;background:#fff;border:1.5px solid #D8D0E8;color:var(--ink2);padding:3px 10px;border-radius:999px}
+.story{background:#FFFDF6;border:1px solid #EADFC8;border-radius:12px;padding:16px 20px;margin:14px 0;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.story p{font-size:17px}
+.verse{border-left:5px solid var(--gold);background:var(--gold2);border-radius:0 12px 12px 0;padding:12px 18px;margin:14px 0;font-size:18px;line-height:1.5;font-style:italic}
+.verse cite{display:block;font-style:normal;font-size:13px;font-weight:800;color:#9A5B00;margin-top:4px}
+.verse a{color:#9A5B00}
+.info{background:var(--lila);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:16px;line-height:1.5;display:flex;gap:12px}
+.info svg{width:22px;height:22px;flex:none;color:var(--violet);margin-top:2px}
+.info.warm{background:#FDECEC}.info.warm svg{color:var(--coral)}
+.task{font-size:17px;line-height:1.5;font-weight:700;margin:6px 0 10px}
+.hint{font-size:14px;color:#7A6F96;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:12px;padding:13px 22px;font-size:17px;font-weight:800;background:var(--violet);color:#fff;box-shadow:0 3px 0 #4A3577;transition:transform .1s}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #4A3577}
+.btn.gold{background:var(--gold);color:var(--ink);box-shadow:0 3px 0 #C98516}
+.btn.ghost{background:#fff;color:var(--violet);box-shadow:0 0 0 2px var(--violet) inset}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn svg{width:18px;height:18px}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px;gap:10px;flex-wrap:wrap}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}}
+
+/* MC */
+.opts{display:flex;flex-direction:column;gap:10px;margin:10px 0}
+.opt{text-align:left;border:2px solid #D8D0E8;background:#fff;border-radius:12px;padding:12px 16px;font-size:16.5px;font-weight:600;color:var(--ink);display:flex;gap:12px;align-items:flex-start}
+.opt b{display:inline-flex;min-width:28px;height:28px;border-radius:50%;background:var(--lila);color:var(--violet);align-items:center;justify-content:center;font-weight:800}
+.opt.right{border-color:var(--green);background:#E8F4EA}.opt.right b{background:var(--green);color:#fff}
+.opt.wrong{border-color:var(--coral);background:#FCEDEA;opacity:.75}
+.opt.picked{border-color:var(--gold);background:var(--gold2)}
+.expl{background:#E8F4EA;border-radius:10px;padding:12px 16px;margin-top:8px;font-size:16px;line-height:1.5}
+/* Text */
+textarea{width:100%;min-height:110px;border:2px solid #D8D0E8;border-radius:12px;padding:12px 14px;font-family:'Patrick Hand',cursive;font-size:21px;line-height:1.4;color:#2B4A8B;background:#fff;resize:vertical}
+textarea:focus{outline:none;border-color:var(--violet)}
+.cnt{font-size:13px;font-weight:700;color:#7A6F96;text-align:right;margin-top:4px}.cnt.ok{color:var(--green)}
+/* Zuordnen */
+.chips{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.chip{text-align:left;border:2px solid #D8D0E8;background:#fff;border-radius:12px;padding:11px 14px;font-size:16px;font-weight:700;color:var(--ink);transition:.15s;line-height:1.4}
+.chip.on{border-color:var(--gold);background:var(--gold2);box-shadow:0 0 0 3px rgba(242,169,59,.3)}
+.chip.ok{border-color:var(--green);background:#E8F4EA;color:#2D6B38}
+.chip small{display:block;font-weight:700;color:#9A8F7A;font-size:12.5px}
+.targets{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0}
+.targets.t4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:640px){.targets,.targets.t4{grid-template-columns:repeat(2,1fr)}}
+.tg{background:#fff;border:2px solid #D8D0E8;border-radius:14px;padding:12px 8px;text-align:center;transition:.15s;font-weight:800;font-size:16px;color:var(--ink)}
+.tg svg{width:40px;height:40px;color:var(--violet);display:block;margin:0 auto 6px}
+.tg.ok{border-color:var(--green);background:#E8F4EA}.tg.ok svg{color:var(--green)}
+.tg .m{font-size:12.5px;font-weight:700;color:#2D6B38;margin-top:5px;line-height:1.3}
+.tg.txt{font-size:14.5px;font-weight:700;text-align:left;line-height:1.35;padding:12px}
+/* Sortieren */
+.sort{display:flex;flex-direction:column;gap:10px;margin:10px 0}
+.sitem{background:#fff;border:2px solid #D8D0E8;border-radius:12px;padding:10px 14px}
+.sitem .t{font-size:16.5px;font-weight:600;line-height:1.4}
+.sitem .cs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.cbtn{border:2px solid #D8D0E8;background:#fff;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:800;color:var(--ink2)}
+.cbtn.right{background:var(--green);border-color:var(--green);color:#fff}
+.cbtn.wrong{background:#FCEDEA;border-color:var(--coral);color:var(--coral);text-decoration:line-through}
+/* Reihenfolge */
+.timeline{counter-reset:t;display:flex;flex-direction:column;gap:6px;margin:10px 0;padding-left:6px;border-left:4px solid var(--sand2)}
+.tl{position:relative;background:#fff;border-radius:10px;padding:9px 12px 9px 44px;font-size:16px;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.tl:before{counter-increment:t;content:counter(t);position:absolute;left:10px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:13px}
+.tl.empty{background:transparent;box-shadow:none;border:2px dashed #D9CBAE;color:#B9A884;font-weight:600}
+.pool{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+/* Hebräisch */
+.heb{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+.hl{width:78px;height:96px;border-radius:14px;border:2px solid #D9CBAE;background:#FFFDF6;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800}
+.hl .h{font-family:'Frank Ruhl Libre','Times New Roman',serif;font-size:44px;line-height:1;color:var(--ink)}
+.hl .l{font-size:13px;color:#9A8F7A;margin-top:4px}
+.hl.used{opacity:.25}
+.hres{direction:rtl;display:flex;gap:6px;justify-content:center;min-height:70px;align-items:center;font-family:'Frank Ruhl Libre','Times New Roman',serif;font-size:56px;color:var(--violet);background:var(--sand);border-radius:14px;padding:6px 14px}
+.hres i{font-style:normal;color:#C9B994;font-size:36px}
+/* Gleichnis */
+.scene{display:flex;gap:14px;align-items:flex-start;background:#fff;border:2px solid #D8E8E1;border-radius:14px;padding:12px 16px;margin:10px 0;animation:fade .4s}
+.scene .no{min-width:34px;height:34px;border-radius:50%;background:var(--nt2);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.scene p{margin:0;font-size:16.5px}
+/* Lückentext */
+.merk{background:var(--ink);color:#fff;border-radius:16px;padding:20px 22px;font-size:18px;line-height:2.3;margin:12px 0}
+.merk select{font-family:inherit;font-size:16px;font-weight:700;border-radius:8px;border:2px solid var(--gold);padding:3px 6px;background:#fff;color:var(--ink)}
+.merk select.right{border-color:#7BD389;background:#E8F4EA}.merk select.wrong{border-color:var(--coral);background:#FCEDEA}
+.merk .fix{color:#FFD978;font-weight:800;font-size:14px;margin-left:4px}
+
+/* Karte */
+.zone{border-radius:18px;padding:18px 18px 10px;margin:16px 0}
+.zone.at{background:var(--sand)} .zone.nt{background:var(--nt)} .zone.end{background:var(--lila)}
+.zone h3{font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.zone.at h3{color:#7A4E12} .zone.nt h3{color:#25624B} .zone.end h3{color:var(--violet)}
+.zone h3 svg{width:18px;height:18px;flex:none}
+.zone h3 small{font-weight:700;letter-spacing:0;text-transform:none;color:#7A6F96;font-size:13px}
+.path{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.path{grid-template-columns:1fr}}
+.stc{display:flex;gap:14px;align-items:center;background:#fff;border-radius:16px;padding:14px;border:2px solid transparent;text-align:left;color:var(--ink);box-shadow:0 2px 8px rgba(46,35,71,.08);transition:.15s}
+.stc:active{transform:scale(.98)}
+.stc .ic{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;color:#fff;position:relative}
+.stc .ic svg{width:26px;height:26px}
+.stc .ic .ck{position:absolute;right:-4px;bottom:-4px;width:22px;height:22px;border-radius:50%;background:var(--green);border:2px solid #fff;display:flex;align-items:center;justify-content:center}
+.stc .ic .ck svg{width:11px;height:11px}
+.stc .no{font-size:11px;font-weight:800;letter-spacing:.8px;color:#9A8F7A;text-transform:uppercase}
+.stc .t{font-size:17px;font-weight:800;line-height:1.2}
+.stc .s{font-size:13px;font-weight:600;color:#7A6F96}
+.stc .p{margin-left:auto;font-size:13px;font-weight:800;color:#9A5B00;background:var(--gold2);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.stc.done{border-color:#BFE0C5}.stc.done .p{background:#E8F4EA;color:var(--green)}
+.stc.lock{opacity:.5}.stc.lock .ic{background:#B9B1CC!important}
+.stc.next{border-color:var(--gold);box-shadow:0 0 0 4px rgba(242,169,59,.25)}
+/* Start / Ziel */
+.hero{text-align:center;padding:10px 0}
+.hero .badge{width:96px;height:96px;border-radius:50%;background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.hero .badge svg{width:46px;height:46px}
+input[type=text]{font-family:inherit;font-size:18px;font-weight:700;border:2px solid #D8D0E8;border-radius:12px;padding:12px 14px;width:100%;max-width:420px;color:var(--ink)}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0;text-align:left}
+@media (max-width:640px){.rules{grid-template-columns:1fr}}
+.rules div{background:var(--lila);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.4}
+.rules b{display:block;color:var(--violet);font-size:16px;margin-bottom:2px}
+.card{background:var(--ink);color:#fff;border-radius:18px;padding:26px;text-align:center;margin:18px auto;max-width:520px;box-shadow:0 8px 24px rgba(46,35,71,.3)}
+.card .big{font-size:58px;font-weight:800;color:var(--gold);line-height:1}
+.card .rank{font-family:'Patrick Hand';font-size:30px;margin:10px 0 4px}
+.card .code{display:inline-block;margin-top:14px;background:#fff;color:var(--ink);font-weight:800;letter-spacing:3px;padding:8px 16px;border-radius:10px;font-size:22px}
+.stats{display:flex;justify-content:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.stats div{background:rgba(255,255,255,.1);border-radius:10px;padding:8px 14px;font-size:14px}.stats b{display:block;font-size:20px}
+.credit{text-align:center;font-size:12px;color:#8A7F6A;margin-top:16px}
+.teacher{position:fixed;bottom:0;left:0;right:0;background:var(--red);color:#fff;text-align:center;font-size:13px;font-weight:800;padding:5px;z-index:30}
+.sol{display:none;margin-top:10px;background:#FDECEC;border:2px dashed var(--red);border-radius:10px;padding:10px 14px;font-size:14.5px;color:#8B1C1C;line-height:1.5}
+body.lehrer .sol{display:block}
+.reset{background:none;border:none;color:#9A8F7A;font-size:13px;font-weight:700;text-decoration:underline}
+.note{background:var(--gold2);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:16px;line-height:1.5}
+
+/* Ergebnis-PDF (A4 = 794 x 1123 px) */
+.prev{margin:16px 0;display:flex;flex-direction:column;gap:16px;align-items:center}
+.prev .sc{overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.18);border-radius:4px}
+.prev .sc>.a4{transform-origin:0 0}
+#cap{position:fixed;left:-20000px;top:0}
+.a4{width:794px;height:1123px;background:#fff;padding:36px 46px;position:relative;overflow:hidden;font-family:'Nunito',sans-serif;color:#2E2347}
+.a4 .hd{border-radius:16px;padding:13px 20px;display:flex;justify-content:space-between;align-items:center;color:#fff}
+.a4 .hd .t{font-size:23px;font-weight:800;line-height:1.1}
+.a4 .hd .k{font-size:11px;font-weight:800;letter-spacing:1px;opacity:.85}
+.a4 .hd .tm{text-align:right;font-size:12.5px;font-weight:700;opacity:.9}.a4 .hd .tm b{display:block;font-size:15px;opacity:1}
+.a4 .sec{margin-top:15px}
+.a4 .st{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:800;margin-bottom:6px}
+.a4 .st i{font-style:normal;width:24px;height:24px;border-radius:50%;background:#F2A93B;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.a4 .st span{font-size:11.5px;font-weight:700;color:#8A7FA6;margin-left:2px}
+.a4 .bx{background:#F4F0FA;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.45}
+.a4 .bx.s{background:#FDF1DD}
+.a4 .ans{font-family:'Patrick Hand',cursive;font-size:17.5px;line-height:1.3;color:#2B4A8B;border:1.5px solid #D8D0E8;border-radius:10px;padding:6px 12px;margin-top:6px;min-height:36px}
+.a4 .lab{font-size:12px;font-weight:700;margin-top:7px}
+.a4 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.a4 .tl5{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.a4 .tl5 div{background:#F6EBD6;border-radius:8px;padding:6px 7px;font-size:10.5px;line-height:1.3;font-weight:700}
+.a4 .tl5 b{display:block;color:#9A5B00;font-size:12px}
+.a4 .ps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.a4 .ps div{background:#F4F0FA;border-radius:8px;padding:7px;font-size:10.5px;line-height:1.3;text-align:center}
+.a4 .ps b{display:block;font-size:13px;color:#6B4FA0}
+.a4 .vu div{display:grid;grid-template-columns:200px 1fr;gap:10px;font-size:12px;line-height:1.35;padding:4px 0;border-bottom:1px solid #EEE9F6}
+.a4 .vu b{color:#3E8A6E}
+.a4 .merk2{background:#2E2347;color:#fff;border-radius:12px;padding:12px 16px;font-size:14px;line-height:1.6}
+.a4 .merk2 u{text-decoration:none;color:#F2A93B;font-weight:800;border-bottom:2px solid #F2A93B}
+.a4 .lines div{height:36px;border-bottom:1.5px solid #C9C0DC}
+.a4 .ft{position:absolute;bottom:16px;left:46px;right:46px;display:flex;justify-content:space-between;font-size:10px;color:#A99BC6}
+.a4 .yhwh{font-family:'Frank Ruhl Libre','Times New Roman',serif;font-size:34px;color:#6B4FA0;direction:rtl;line-height:1}
+.exp{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
+</style>
+</head>
+<body>
+<div class="bar" id="bar" style="display:none">
+  <div class="row">
+    <div class="team" id="teamName"></div>
+    <button class="pill" onclick="go('karte')" title="Karte"><svg stroke="currentColor" stroke-width="0" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M408 120c0 54.6-73.1 151.9-105.2 192c-7.7 9.6-22 9.6-29.6 0C241.1 271.9 168 174.6 168 120C168 53.7 221.7 0 288 0s120 53.7 120 120zm8 80.4c3.5-6.9 6.7-13.8 9.6-20.6c.5-1.2 1-2.5 1.5-3.7l116-46.4C558.9 123.4 576 135 576 152l0 270.8c0 9.8-6 18.6-15.1 22.3L416 503l0-302.6zM137.6 138.3c2.4 14.1 7.2 28.3 12.8 41.5c2.9 6.8 6.1 13.7 9.6 20.6l0 251.4L32.9 502.7C17.1 509 0 497.4 0 480.4L0 209.6c0-9.8 6-18.6 15.1-22.3l122.6-49zM327.8 332c13.9-17.4 35.7-45.7 56.2-77l0 249.3L192 449.4 192 255c20.5 31.3 42.3 59.6 56.2 77c20.5 25.6 59.1 25.6 79.6 0zM288 152a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"></path></svg><span>Karte</span></button>
+    <div class="pill" title="Zeit"><svg stroke="currentColor" stroke-width="0" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"></path></svg><span id="time">0:00</span></div>
+    <div class="pill pts" title="Punkte"><svg stroke="currentColor" stroke-width="0" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg><span id="pts">0</span></div>
+  </div>
+  <div class="prog" id="prog"></div>
+</div>
+<div class="pop" id="pop"></div>
+<div class="wrap"><div class="page" id="page"></div>
+<div class="credit">Bibelzitate: Lutherbibel 2017, © Deutsche Bibelgesellschaft · Vaterunser: ökumenische Fassung · Nacherzählungen in eigenen Worten</div></div>
+
+<script>
+const I={"fire": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M159.3 5.4c7.8-7.3 19.9-7.2 27.7 .1c27.6 25.9 53.5 53.8 77.7 84c11-14.4 23.5-30.1 37-42.9c7.9-7.4 20.1-7.4 28 .1c34.6 33 63.9 76.6 84.5 118c20.3 40.8 33.8 82.5 33.8 111.9C448 404.2 348.2 512 224 512C98.4 512 0 404.1 0 276.5c0-38.4 17.8-85.3 45.4-131.7C73.3 97.7 112.7 48.6 159.3 5.4zM225.7 416c25.3 0 47.7-7 68.8-21c42.1-29.4 53.4-88.2 28.1-134.4c-4.5-9-16-9.6-22.5-2l-25.2 29.3c-6.6 7.6-18.5 7.4-24.7-.5c-16.5-21-46-58.5-62.8-79.8c-6.3-8-18.3-8.1-24.7-.1c-33.8 42.5-50.8 69.3-50.8 99.4C112 375.4 162.6 416 225.7 416z\"></path></svg>", "ban": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M367.2 412.5L99.5 144.8C77.1 176.1 64 214.5 64 256c0 106 86 192 192 192c41.5 0 79.9-13.1 111.2-35.5zm45.3-45.3C434.9 335.9 448 297.5 448 256c0-106-86-192-192-192c-41.5 0-79.9 13.1-111.2 35.5L412.5 367.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z\"></path></svg>", "water": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 576 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M269.5 69.9c11.1-7.9 25.9-7.9 37 0C329 85.4 356.5 96 384 96c26.9 0 55.4-10.8 77.4-26.1c0 0 0 0 0 0c11.9-8.5 28.1-7.8 39.2 1.7c14.4 11.9 32.5 21 50.6 25.2c17.2 4 27.9 21.2 23.9 38.4s-21.2 27.9-38.4 23.9c-24.5-5.7-44.9-16.5-58.2-25C449.5 149.7 417 160 384 160c-31.9 0-60.6-9.9-80.4-18.9c-5.8-2.7-11.1-5.3-15.6-7.7c-4.5 2.4-9.7 5.1-15.6 7.7c-19.8 9-48.5 18.9-80.4 18.9c-33 0-65.5-10.3-94.5-25.8c-13.4 8.4-33.7 19.3-58.2 25c-17.2 4-34.4-6.7-38.4-23.9s6.7-34.4 23.9-38.4C42.8 92.6 61 83.5 75.3 71.6c11.1-9.5 27.3-10.1 39.2-1.7c0 0 0 0 0 0C136.7 85.2 165.1 96 192 96c27.5 0 55-10.6 77.5-26.1zm37 288C329 373.4 356.5 384 384 384c26.9 0 55.4-10.8 77.4-26.1c0 0 0 0 0 0c11.9-8.5 28.1-7.8 39.2 1.7c14.4 11.9 32.5 21 50.6 25.2c17.2 4 27.9 21.2 23.9 38.4s-21.2 27.9-38.4 23.9c-24.5-5.7-44.9-16.5-58.2-25C449.5 437.7 417 448 384 448c-31.9 0-60.6-9.9-80.4-18.9c-5.8-2.7-11.1-5.3-15.6-7.7c-4.5 2.4-9.7 5.1-15.6 7.7c-19.8 9-48.5 18.9-80.4 18.9c-33 0-65.5-10.3-94.5-25.8c-13.4 8.4-33.7 19.3-58.2 25c-17.2 4-34.4-6.7-38.4-23.9s6.7-34.4 23.9-38.4c18.1-4.2 36.2-13.3 50.6-25.2c11.1-9.4 27.3-10.1 39.2-1.7c0 0 0 0 0 0C136.7 373.2 165.1 384 192 384c27.5 0 55-10.6 77.5-26.1c11.1-7.9 25.9-7.9 37 0zm0-144C329 229.4 356.5 240 384 240c26.9 0 55.4-10.8 77.4-26.1c0 0 0 0 0 0c11.9-8.5 28.1-7.8 39.2 1.7c14.4 11.9 32.5 21 50.6 25.2c17.2 4 27.9 21.2 23.9 38.4s-21.2 27.9-38.4 23.9c-24.5-5.7-44.9-16.5-58.2-25C449.5 293.7 417 304 384 304c-31.9 0-60.6-9.9-80.4-18.9c-5.8-2.7-11.1-5.3-15.6-7.7c-4.5 2.4-9.7 5.1-15.6 7.7c-19.8 9-48.5 18.9-80.4 18.9c-33 0-65.5-10.3-94.5-25.8c-13.4 8.4-33.7 19.3-58.2 25c-17.2 4-34.4-6.7-38.4-23.9s6.7-34.4 23.9-38.4c18.1-4.2 36.2-13.3 50.6-25.2c11.1-9.5 27.3-10.1 39.2-1.7c0 0 0 0 0 0C136.7 229.2 165.1 240 192 240c27.5 0 55-10.6 77.5-26.1c11.1-7.9 25.9-7.9 37 0z\"></path></svg>", "music": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7l0 72 0 264c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6L448 147 192 223.8 192 432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6L128 200l0-72c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z\"></path></svg>", "pray": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 640 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M351.2 4.8c3.2-2 6.6-3.3 10-4.1c4.7-1 9.6-.9 14.1 .1c7.7 1.8 14.8 6.5 19.4 13.6L514.6 194.2c8.8 13.1 13.4 28.6 13.4 44.4l0 73.5c0 6.9 4.4 13 10.9 15.2l79.2 26.4C631.2 358 640 370.2 640 384l0 96c0 9.9-4.6 19.3-12.5 25.4s-18.1 8.1-27.7 5.5L431 465.9c-56-14.9-95-65.7-95-123.7L336 224c0-17.7 14.3-32 32-32s32 14.3 32 32l0 80c0 8.8 7.2 16 16 16s16-7.2 16-16l0-84.9c0-7-1.8-13.8-5.3-19.8L340.3 48.1c-1.7-3-2.9-6.1-3.6-9.3c-1-4.7-1-9.6 .1-14.1c1.9-8 6.8-15.2 14.3-19.9zm-62.4 0c7.5 4.6 12.4 11.9 14.3 19.9c1.1 4.6 1.2 9.4 .1 14.1c-.7 3.2-1.9 6.3-3.6 9.3L213.3 199.3c-3.5 6-5.3 12.9-5.3 19.8l0 84.9c0 8.8 7.2 16 16 16s16-7.2 16-16l0-80c0-17.7 14.3-32 32-32s32 14.3 32 32l0 118.2c0 58-39 108.7-95 123.7l-168.7 45c-9.6 2.6-19.9 .5-27.7-5.5S0 490 0 480l0-96c0-13.8 8.8-26 21.9-30.4l79.2-26.4c6.5-2.2 10.9-8.3 10.9-15.2l0-73.5c0-15.8 4.7-31.2 13.4-44.4L245.2 14.5c4.6-7.1 11.7-11.8 19.4-13.6c4.6-1.1 9.4-1.2 14.1-.1c3.5 .8 6.9 2.1 10 4.1z\"></path></svg>", "walkback": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 640 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M208 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM123.7 200.5c1-.4 1.9-.8 2.9-1.2l-16.9 63.5c-5.6 21.1-.1 43.6 14.7 59.7l70.7 77.1 22 88.1c4.3 17.1 21.7 27.6 38.8 23.3s27.6-21.7 23.3-38.8l-23-92.1c-1.9-7.8-5.8-14.9-11.2-20.8l-49.5-54 19.3-65.5 9.6 23c4.4 10.6 12.5 19.3 22.8 24.5l26.7 13.3c15.8 7.9 35 1.5 42.9-14.3s1.5-35-14.3-42.9L281 232.7l-15.3-36.8C248.5 154.8 208.3 128 163.7 128c-22.8 0-45.3 4.8-66.1 14l-8 3.5c-32.9 14.6-58.1 42.4-69.4 76.5l-2.6 7.8c-5.6 16.8 3.5 34.9 20.2 40.5s34.9-3.5 40.5-20.2l2.6-7.8c5.7-17.1 18.3-30.9 34.7-38.2l8-3.5zm-30 135.1L68.7 398 9.4 457.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L116.3 441c4.6-4.6 8.2-10.1 10.6-16.1l14.5-36.2-40.7-44.4c-2.5-2.7-4.8-5.6-7-8.6zm347.7 119c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L461.3 384l18.7 0c88.4 0 160-71.6 160-160s-71.6-160-160-160L352 64c-17.7 0-32 14.3-32 32s14.3 32 32 32l128 0c53 0 96 43 96 96s-43 96-96 96l-18.7 0 25.4-25.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-80 80c-12.5 12.5-12.5 32.8 0 45.3l80 80z\"></path></svg>", "lock": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z\"></path></svg>", "check": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z\"></path></svg>", "flag": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 0C49.7 0 64 14.3 64 32l0 16 69-17.2c38.1-9.5 78.3-5.1 113.5 12.5c46.3 23.2 100.8 23.2 147.1 0l9.6-4.8C423.8 28.1 448 43.1 448 66.1l0 279.7c0 13.3-8.3 25.3-20.8 30l-34.7 13c-46.2 17.3-97.6 14.6-141.7-7.4c-37.9-19-81.3-23.7-122.5-13.4L64 384l0 96c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-80 0-66L0 64 0 32C0 14.3 14.3 0 32 0zM64 187.1l64-13.9 0 65.5L64 252.6 64 318l48.8-12.2c5.1-1.3 10.1-2.4 15.2-3.3l0-63.9 38.9-8.4c8.3-1.8 16.7-2.5 25.1-2.1l0-64c13.6 .4 27.2 2.6 40.4 6.4l23.6 6.9 0 66.7-41.7-12.3c-7.3-2.1-14.8-3.4-22.3-3.8l0 71.4c21.8 1.9 43.3 6.7 64 14.4l0-69.8 22.7 6.7c13.5 4 27.3 6.4 41.3 7.4l0-64.2c-7.8-.8-15.6-2.3-23.2-4.5l-40.8-12 0-62c-13-3.8-25.8-8.8-38.2-15c-8.2-4.1-16.9-7-25.8-8.8l0 72.4c-13-.4-26 .8-38.7 3.6L128 173.2 128 98 64 114l0 73.1zM320 335.7c16.8 1.5 33.9-.7 50-6.8l14-5.2 0-71.7-7.9 1.8c-18.4 4.3-37.3 5.7-56.1 4.5l0 77.4zm64-149.4l0-70.8c-20.9 6.1-42.4 9.1-64 9.1l0 69.4c13.9 1.4 28 .5 41.7-2.6l22.3-5.2z\"></path></svg>", "star": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 576 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z\"></path></svg>", "clock": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z\"></path></svg>", "scroll": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 576 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 80l0 48c0 17.7 14.3 32 32 32l16 0 48 0 0-80c0-26.5-21.5-48-48-48S0 53.5 0 80zM112 32c10 13.4 16 30 16 48l0 304c0 35.3 28.7 64 64 64s64-28.7 64-64l0-5.3c0-32.4 26.3-58.7 58.7-58.7L480 320l0-192c0-53-43-96-96-96L112 32zM464 480c61.9 0 112-50.1 112-112c0-8.8-7.2-16-16-16l-245.3 0c-14.7 0-26.7 11.9-26.7 26.7l0 5.3c0 53-43 96-96 96l176 0 96 0z\"></path></svg>", "map": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 576 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M408 120c0 54.6-73.1 151.9-105.2 192c-7.7 9.6-22 9.6-29.6 0C241.1 271.9 168 174.6 168 120C168 53.7 221.7 0 288 0s120 53.7 120 120zm8 80.4c3.5-6.9 6.7-13.8 9.6-20.6c.5-1.2 1-2.5 1.5-3.7l116-46.4C558.9 123.4 576 135 576 152l0 270.8c0 9.8-6 18.6-15.1 22.3L416 503l0-302.6zM137.6 138.3c2.4 14.1 7.2 28.3 12.8 41.5c2.9 6.8 6.1 13.7 9.6 20.6l0 251.4L32.9 502.7C17.1 509 0 497.4 0 480.4L0 209.6c0-9.8 6-18.6 15.1-22.3l122.6-49zM327.8 332c13.9-17.4 35.7-45.7 56.2-77l0 249.3L192 449.4 192 255c20.5 31.3 42.3 59.6 56.2 77c20.5 25.6 59.1 25.6 79.6 0zM288 152a40 40 0 1 0 0-80 40 40 0 1 0 0 80z\"></path></svg>", "pdf": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z\"></path></svg>", "bulb": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 384 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M272 384c9.6-31.9 29.5-59.1 49.2-86.2c0 0 0 0 0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4c0 0 0 0 0 0c19.8 27.1 39.7 54.4 49.2 86.2l160 0zM192 512c44.2 0 80-35.8 80-80l0-16-160 0 0 16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z\"></path></svg>", "book": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 576 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5l0-377.4c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32C93.5 32 46.3 45.3 18.1 56.1C6.8 60.5 0 71.7 0 83.8L0 454.1c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5zm76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6c11.3 3.8 24.1-4.6 24.1-16.5l0-370.3c0-12.1-6.8-23.3-18.1-27.6C529.7 45.3 482.5 32 432 32c-58.4 0-103.4 20-123 35.6c-3.3 2.6-5 6.8-5 11L304 456c0 11.4 11.7 19.3 22.4 15.5z\"></path></svg>", "mother": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 640 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M320 0a40 40 0 1 1 0 80 40 40 0 1 1 0-80zm44.7 164.3L375.8 253c1.6 13.2-7.7 25.1-20.8 26.8s-25.1-7.7-26.8-20.8l-4.4-35-7.6 0-4.4 35c-1.6 13.2-13.6 22.5-26.8 20.8s-22.5-13.6-20.8-26.8l11.1-88.8L255.5 181c-10.1 8.6-25.3 7.3-33.8-2.8s-7.3-25.3 2.8-33.8l27.9-23.6C271.3 104.8 295.3 96 320 96s48.7 8.8 67.6 24.7l27.9 23.6c10.1 8.6 11.4 23.7 2.8 33.8s-23.7 11.4-33.8 2.8l-19.8-16.7zM40 64c22.1 0 40 17.9 40 40l0 40 0 80 0 40.2c0 17 6.7 33.3 18.7 45.3l51.1 51.1c8.3 8.3 21.3 9.6 31 3.1c12.9-8.6 14.7-26.9 3.7-37.8l-15.2-15.2-32-32c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l32 32 15.2 15.2c0 0 0 0 0 0l25.3 25.3c21 21 32.8 49.5 32.8 79.2l0 78.9c0 26.5-21.5 48-48 48l-66.7 0c-17 0-33.3-6.7-45.3-18.7L28.1 393.4C10.1 375.4 0 351 0 325.5L0 224l0-64 0-56C0 81.9 17.9 64 40 64zm560 0c22.1 0 40 17.9 40 40l0 56 0 64 0 101.5c0 25.5-10.1 49.9-28.1 67.9L512 493.3c-12 12-28.3 18.7-45.3 18.7L400 512c-26.5 0-48-21.5-48-48l0-78.9c0-29.7 11.8-58.2 32.8-79.2l25.3-25.3c0 0 0 0 0 0l15.2-15.2 32-32c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-32 32-15.2 15.2c-11 11-9.2 29.2 3.7 37.8c9.7 6.5 22.7 5.2 31-3.1l51.1-51.1c12-12 18.7-28.3 18.7-45.3l0-40.2 0-80 0-40c0-22.1 17.9-40 40-40z\"></path></svg>", "heart": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z\"></path></svg>", "handshake": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 640 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L512 316.8 512 128l-.7 0-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48 0 224 28.2 0 91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123zM16 128c-8.8 0-16 7.2-16 16L0 352c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32l0-224-80 0zM48 320a16 16 0 1 1 0 32 16 16 0 1 1 0-32zM544 128l0 224c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32l0-208c0-8.8-7.2-16-16-16l-80 0zm32 208a16 16 0 1 1 32 0 16 16 0 1 1 -32 0z\"></path></svg>", "sheep": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M392.8 107.5c9.3 5.3 25.8 9.3 40 9.2 7.7-.1 14.6-1.2 19.5-3.2 5-1.8 6.9-4.9 8.9-8.8-9.2-6.08-22.1-12.27-31.8-12.87-14.9.53-28.8 8.13-36.6 15.67zm-253 20.2c-1.7 5.5-7.9 8.1-13 5.4-26.5-14.5-50.46-6.9-67.71 8.7-35.93 32.6-45.13 87.3-32.47 145.7 7.31 33.6 18.99 53 41.29 62.8 0 .1.1.1.15.1 2.22 1 4.21 1.9 6.09 2.8l4.61-22c1.02-4.9 5.8-8 10.66-7s7.98 5.8 6.96 10.7l-23.5 112c4.79 7.2 16.4 1.2 21.3-1.2l38.12-106.5c10.8-9.4 21.2-19 28.7-29.2 6.6-9.1 10.4-18.4 10.6-23.5.2-5 4.4-8.9 9.4-8.7 5 .2 9 4.6 8.6 9.6-.6 11.2-6.2 22.4-14 33.2-7.3 10-16.7 19.6-27.2 27.2l-3.3 8.9c6.9 8.7 13.4 13.8 19.6 16.8 8.8 4.1 17.7 4.6 28.5 3.3 16.4-1.9 34.6-12.9 43.5-37.2 2.8-7.7 13.6-8 16.8-.5 7.7 21.2 36.1 32.6 55.1 24l-3.9-23.3c-.8-4.9 2.5-9.6 7.4-10.4 4.9-.9 9.6 2.5 10.4 7.4l17.6 105.9c9.2 6.3 14.5 2.4 19.9-4.4l-13.8-114.4c-.7-5.3 3.3-10 8.6-10.2 4.8-.2 8.8 3.3 9.3 8l4.3 35.7c5.1-1.2 9.1-2.5 12.4-5 4.3-3.2 8.5-8.7 12.1-21.5 1.7-6 9-8.5 14.1-4.7 13.6 8.3 27.4-1.8 35.6-12.2 12.9-16.5 14.7-42.4 13.2-69.2-2.1.3-4.2.5-6.3.6-8.8.5-17.9-.9-25.7-4.4-12.4-7-22-18.4-28.2-28.9-3.9-6.8-7.3-13.7-10.5-20-5.4 9.9-11 23.1-19.2 25-12.5 2.1-23.9-3.7-29.8-12.7-5.9-8.9-7.4-20.2-4.8-31.1 2.7-11.7 9.8-38.3 22.6-56.1 2.2-2.9 4.5-5.3 6.8-7.4-7.5-3.1-16.2-3.8-22.9-3.8-5.8 0-13.5 1.8-19.7 5-6.2 3.3-10.7 7.8-12.2 11.8-3.2 8.5-15.5 7.5-17.3-1.3-3.8-22.78-53.9-17.8-65.6 2-3.8 7-14.1 5.9-16.5-1.7-8.1-22.61-62.7-21.3-66.7 5.9zm345-1.5c1.7 16.4 3.5 32.2 4.2 45.6 1.8 6.5 6 18.9 8.7 7.3.9-4.1.8-11-.4-18.6-.1-7.1-14.5-47.3-12.5-34.3zm-112.7-2.5c-11.9 15-19.2 37.4-23.3 53.7-.6 5.8-.6 12.6 2.3 17.1 2.3 3.4 4.8 5.2 9.4 5 5.8-9.4 12.1-19.8 15.6-28.2-1.2-7.9-2.8-19.9-3.6-31.4-.4-5.8-.6-11.2-.4-16.2zm94.4 2.4c-2.4 1.6-4.8 3.1-7.5 4.1-7.8 3.2-16.8 4.4-26 4.5-14.8.1-30.2-2.7-42.9-8.4 0 3.6.1 7.7.4 12.3.9 12.6 3 27.2 4 33.5 10.5 16.6 19.9 44.4 36.8 52.5 5.8 2 11.9 3.1 17.2 2.9 6-.4 10.6-2.6 11.5-3.7 3.5-8 5.9-15.2 7.3-22.3 2.1-10.9 3.4-23.3 3.6-31.6.3-6.4-.6-13.3-1.1-18.7-1.4 4.1-5.7 6.6-10 5.9-4.3-.7-7.5-4.4-7.5-8.8 0-5.1 4.2-9.2 9.3-9 3 0 5.8 1.7 7.4 4.3-.9-6.1-1.4-12-2.5-17.5zm-58.3 16.5c4.9.2 8.7 4.2 8.7 9 0 5-4 9-9 9-4.9 0-9-4-9-9s4.2-9.1 9.3-9zm47.5 48.3c3.7-.1 6.5 1.9 6.5 6.2 0 7.8-5.8 15-12.7 19l-1-23.1c2.5-1.4 5-2.1 7.2-2.1zm-24.1 2c1.8-.1 3.9.4 5.8 1.3l3.8 22.5c-6-3.7-15.4-3.6-16.5-16.1-.5-5.2 2.8-7.7 6.9-7.7zm-30.9 164.2c-3.7 5.1-7.6 9.1-12.6 12.1l16.6 62c7.6 1.5 15.9 1 19.2-5.1zm-241.2 33.7l1.5 46.8c7.9 7.9 12.9 4.8 19.7-3l-3.7-39.5c-6.3-.9-12.6-2.2-17.5-4.3z\"></path></svg>", "castle": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M255.95 27.11L180.6 107.614l150.7 1.168-75.35-81.674h-.003zM25 109.895v68.01l19.412 25.99h71.06l19.528-26v-68h-14v15.995h-18v-15.994H89v15.995H71v-15.994H57v15.995H39v-15.994H25zm352 0v68l19.527 26h71.06L487 177.906v-68.01h-14v15.995h-18v-15.994h-14v15.995h-18v-15.994h-14v15.995h-18v-15.994h-14zm-176 15.877V260.89h110V126.63l-110-.857zm55 20.118c8 0 16 4 16 12v32h-32v-32c0-8 8-12 16-12zM41 221.897V484.89h78V221.897H41zm352 0V484.89h78V221.897h-78zM56 241.89c4 0 8 4 8 12v32H48v-32c0-8 4-12 8-12zm400 0c4 0 8 4 8 12v32h-16v-32c0-8 4-12 8-12zm-303 37v23h-16v183h87v-55c0-24 16-36 32-36s32 12 32 36v55h87v-183h-16v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14zm-49 43c4 0 8 4 8 12v32H96v-32c0-8 4-12 8-12zm72 0c8 0 16 4 16 12v32h-32v-32c0-8 8-12 16-12zm80 0c8 0 16 4 16 12v32h-32v-32c0-8 8-12 16-12zm80 0c8 0 16 4 16 12v32h-32v-32c0-8 8-12 16-12zm72 0c4 0 8 4 8 12v32h-16v-32c0-8 4-12 8-12zm-352 64c4 0 8 4 8 12v32H48v-32c0-8 4-12 8-12zm400 0c4 0 8 4 8 12v32h-16v-32c0-8 4-12 8-12z\"></path></svg>", "feather": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M92.438 28.97C75.263 47.722 60.826 69.69 49.593 94L167.5 204.656l-12.78 13.625L41.905 112.407c-9.19 24.257-15.377 50.455-18.156 77.844l116.156 58.72-8.437 16.686L22.312 210.47c-.963 24.45.777 49.666 5.437 75.155l100.53 8.313-1.53 18.625-94.97-7.844c.743 3.09 1.515 6.185 2.345 9.28 4.43 16.51 9.94 32.34 16.375 47.438 8.757-1.615 17.808-3.274 27.813-5.157 26.754-5.033 53.093-10.06 53.093-10.06l3.5 18.342s-26.368 5.054-53.156 10.094c-8.012 1.508-15.797 2.97-23.188 4.344 8.65 17.507 18.62 33.887 29.657 49l60.843-34.28L158.22 410l-58.407 32.938c12.202 14.79 25.482 28.186 39.624 40l17.157-20.344c1.38-20.537 4.963-37.725 14.375-51.72 6.338-9.425 15.44-16.826 27.155-21.937C189.86 376.115 183.3 361.62 179 345.594c-14.526-54.15.58-108.49 36.406-138.094L92.436 28.97zm330.843 0L300.314 207.5c35.826 29.604 50.964 83.943 36.437 138.094-4.26 15.877-10.768 30.237-18.938 42.97 12.345 5.384 21.554 13.502 27.5 23.655 7.81 13.333 10.495 29.117 11.407 47.467l19.592 23.25c14.14-11.813 27.423-25.208 39.625-40L357.5 410l9.188-16.28L427.53 428c11.04-15.117 21.006-31.49 29.658-49-7.4-1.374-15.207-2.836-23.22-4.344-26.787-5.04-53.156-10.094-53.156-10.094l3.5-18.343s26.372 5.027 53.125 10.06c9.794 1.844 19.196 3.598 27.813 5.19 6.44-15.105 11.944-30.954 16.375-47.47.83-3.095 1.602-6.19 2.344-9.28L389 312.56l-1.53-18.625L488 285.625c4.66-25.49 6.37-50.705 5.406-75.156L384.25 265.655l-8.438-16.687L492 190.25c-2.783-27.4-8.956-53.61-18.156-77.875L361.03 218.28l-12.81-13.624L466.124 94c-11.236-24.31-25.668-46.277-42.844-65.03zM256.095 290.03c-10.452 0-20.172 5.342-27.78 15.126-7.61 9.784-12.658 23.895-12.658 39.688 0 15.793 5.047 29.903 12.656 39.687 7.61 9.785 17.33 15.158 27.782 15.158 10.452 0 20.14-5.373 27.75-15.157 7.61-9.783 12.656-23.893 12.656-39.686s-5.047-29.904-12.656-39.688c-7.61-9.784-17.298-15.125-27.75-15.125zm39.625 111.19c-10.36 11.14-24.236 18.342-39.626 18.342-14.957 0-28.49-6.798-38.75-17.406-2.662.66-5.147 1.384-7.438 2.188-11.464 4.02-18.388 9.46-23.437 16.97-9.19 13.66-11.542 37.05-11.907 69.248h163.812c-.135-31.55-1.154-55.19-9.188-68.906-4.42-7.55-10.596-12.946-21.562-17.062-3.467-1.302-7.433-2.437-11.906-3.375z\"></path></svg>", "sun": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M320.063 19.72c-72.258 14.575-19.248 71.693-74.344 108.81 4.846-.49 9.746-.702 14.655-.624 16.288.26 32.785 3.72 48.594 10.72 4.96 2.196 9.723 4.667 14.25 7.405 12.107-47.476-37.103-96.38-3.158-126.31zM136.75 44.47c-40.76 61.357 36.984 64.33 24.406 129.405 17.407-21.255 41.17-35.9 67.156-42.313-25.006-42.138-94.4-41.924-91.562-87.093zm297.313 75.405c-32.547.872-45.475 46.314-96.594 36.22 21.35 17.42 36.034 41.25 42.467 67.31 42.306-24.92 42.053-94.466 87.282-91.624-13.43-8.92-24.06-12.15-33.158-11.905zm-177.97 26.656c-23.656.46-46.53 8.82-64.906 23.626l18.657 36.156L170 193.156c-3.576 5.264-6.737 10.908-9.406 16.938-8.726 19.708-11.002 40.59-7.78 60.344l44.78 2.125-34 30.312c10.798 20.622 28.414 37.852 51.406 48.03 3.077 1.364 6.186 2.574 9.313 3.626l24.53-38.25 9.095 43.814c27.3.075 53.737-10.387 73.593-29.188l-19.186-37.125 38.406 12.658c1.822-3.188 3.512-6.506 5.03-9.938 9.746-22.01 11.457-45.498 6.44-67.22l-37.626-1.75 27.687-24.718c-10.83-20.194-28.236-37.07-50.874-47.093-1.37-.607-2.745-1.176-4.125-1.72l-25.874 40.313-9.906-47.75c-.5-.016-1-.023-1.5-.032-1.3-.02-2.61-.024-3.906 0zM133.407 186.5c-41.652.725-82.483 34.847-108.72 5.094 14.573 72.234 71.664 19.3 108.783 74.312-2.154-20.972.934-42.758 10.06-63.375 2.178-4.915 4.637-9.604 7.345-14.093-5.822-1.47-11.642-2.038-17.47-1.937zm249.5 53.97c2.204 21.047-.867 42.926-10.03 63.624l-.188.375c-2.143 4.796-4.57 9.393-7.22 13.78 47.524 12.244 96.507-37.137 126.47-3.156-14.603-72.388-71.92-19.04-109.032-74.625zM136.53 283.405c-42.123 25.014-41.928 94.37-87.093 91.53 61.422 40.803 64.322-37.123 129.594-24.342-21.344-17.385-36.03-41.167-42.5-67.188zm219.064 48.906c-17.406 21.46-41.236 36.24-67.344 42.72 24.944 42.263 94.497 42.004 91.656 87.218 40.867-61.52-37.402-64.358-24.312-129.938zM193.406 360.72c-12.047 47.456 37.087 96.33 3.156 126.25 72.305-14.587 19.195-71.79 74.47-108.908-21.04 2.204-42.898-.9-63.594-10.062-4.884-2.162-9.57-4.594-14.032-7.28z\"></path></svg>", "rock": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M317.727 108.904l-95.192 96.592-26.93 86.815 17.54 36.723 20.417 9.287 33.182-55.082 11.297-3.61 61.75 26.85 20.26-12.998 4.47-43.7 11.42 53.634-10.622 14.162 3.772 1.64 5.238 6.5 6.832 34.343 55.977-66.775 13.98.23 22.397 28.575-9.453-52.244L434.01 166.81l-116.28-57.906zM123.61 120.896L94.08 173l-4.603 27.62 25.98-8.442 11.704 7.377.084.634 28.295 59.865 13.773-4.543 10.94 4.668 3.922 8.21 19.517-62.917-1.074-33.336-40.15-.522-29.732-23.78 34.06 10.888 42.49-7.727 26.034 15.88 36.282-36.815c-2.777-1.18-5.615-2.356-8.58-3.52l-79.58 10.126-3.528-.25-56.307-15.52zm249.33 36.422l47.058 66.02 2.107 62.51-25.283-59.698-65.322-60.404 41.44-8.428zm-262.2 55.32l-64.234 20.876-16.71 78.552 50.794 5.582.596-7.14 37.662-36.707-8.108-61.16zm56.688 62.45l-36.44 12.016-31.644 30.84 22.588 30.867 57.326 1.74 16.5-16.16-28.33-59.302zm110.666 24.19l-44.307 73.546-.033 57.14 97.264 12.216 44.242-19.528-17.666-88.806-79.5-34.567zM443.8 313.36l-46.843 55.876.287 1.774 65.147 13.887 25.78-14.926-44.37-56.613zm-138.382 15.89l39.23 22.842 13.41 50.658-26.82 23.838-45.015-2.553 38.562-28.242 2.483-39.23-21.85-27.312zm-238.37 53.838l-8.77 28.51 13.152 48.498 91.037-11.91 1.32-26.418-62.582-31.995-34.156-6.684z\"></path></svg>", "tablet": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M206.355 24.53L23.982 171.567l.086.373h-.013l-5.7 124.037 131.676 82.55L245.66 492.14l63.94-8.59 109.808-109.587 72.772-35.453.953-70.24 1.186-50.508L327.75 104.63l-33.41 14.46-3.46 29.756-18.566-2.16 3.21-27.598-46.934-7.715-21.106 28.844-15.082-11.037 27.887-38.11 65.273 10.73-.13.78 25.2-10.908-51.485-64.012-52.793-3.13zM40.605 218.886l117.91 74.13 49.065-9.7-14.14-13.71 13.01-13.42 39.75 38.545-71.942 14.223-18.918 50.844-117.817-73.86 3.082-67.052zm362.754 59.068l44.382 20.55 26.463-12.92-.56 41.165-50.293 24.504 9.59-39.008-37.434-17.332 7.85-16.96zm-211.534 37.373l78.108 93-24.81 54.158-75.405-89.59.602.225 21.504-57.794zm218.403 11.028l-9.896 40.24-89.69 89.51 19.092-49.204 80.493-80.546zm-102.293 85.064l-21.904 56.44-24.312 3.267 26.118-57.01 20.1-2.697z\"></path></svg>", "shoe": "<svg stroke=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 640 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M416 0C352.3 0 256 32 256 32l0 128c48 0 76 16 104 32s56 32 104 32c56.4 0 176-16 176-96S512 0 416 0zM128 96c0 35.3 28.7 64 64 64l32 0 0-128-32 0c-35.3 0-64 28.7-64 64zM288 512c96 0 224-48 224-128s-119.6-96-176-96c-48 0-76 16-104 32s-56 32-104 32l0 128s96.3 32 160 32zM0 416c0 35.3 28.7 64 64 64l32 0 0-128-32 0c-35.3 0-64 28.7-64 64z\"></path></svg>"};
+const LEHRER=/[?&]lehrer\b/.test(location.search);
+if(LEHRER){document.body.classList.add('lehrer');document.body.insertAdjacentHTML('beforeend','<div class="teacher">LEHRKRAFT-MODUS · Lösungen sichtbar · alle Stationen frei</div>')}
+const BS=r=>`https://www.bibleserver.com/LUT/${r}`;
+
+/* ---------- Stationen ---------- */
+const ST=[
+ {id:'s1',part:1,ic:'fire',col:'#E46F5B',t:'Der Dornbusch',s:'2. Mose 3 · Gottes Name JHWH',soz:'zu zweit · 10 Min.',max:40,tasks:['s1heb','s1a','s1b','s1t']},
+ {id:'s2',part:1,ic:'ban',col:'#B85C38',t:'Kein Bildnis',s:'2. Mose 20,4 · Das Bilderverbot',soz:'zu zweit · 10 Min.',max:50,tasks:['s2sort','s2a','s2t']},
+ {id:'s3',part:1,ic:'water',col:'#3E9C9E',t:'Der Gott, der befreit',s:'Exodus und Bund am Sinai',soz:'zu zweit · 8 Min.',max:40,tasks:['s3ord','s3a']},
+ {id:'s4',part:1,ic:'music',col:'#C98516',t:'Bilder für Gott',s:'Psalmen und Propheten',soz:'zu zweit · 8 Min.',max:35,tasks:['s4m','s4t']},
+ {id:'s5',part:2,ic:'pray',col:'#3E8A6E',t:'Abba – lieber Vater',s:'Markus 14,36 · Das Vaterunser',soz:'zu zweit · 12 Min.',max:40,tasks:['s5a','s5m','s5t']},
+ {id:'s6',part:2,ic:'walkback',col:'#2F7A8A',t:'Der barmherzige Vater',s:'Lukas 15,11–32 · Ein Gleichnis',soz:'zu zweit · 12 Min.',max:25,tasks:['s6pred','s6a','s6t']},
+ {id:'check',part:3,ic:'scroll',col:'#6B4FA0',t:'Abschluss-Check',s:'Was wir gelernt haben',soz:'allein · 5 Min.',max:35,tasks:['chk']},
+ {id:'bonus',part:3,ic:'star',col:'#D9A21B',t:'Wer sagt das?',s:'Bonus-Quiz',soz:'zu zweit · 4 Min.',max:20,bonus:true,tasks:['bq0','bq1','bq2','bq3','bq4']}
+];
+const MAX=ST.filter(s=>!s.bonus).reduce((a,s)=>a+s.max,0);
+const SID=Object.fromEntries(ST.map(s=>[s.id,s]));
+
+/* ---------- Zustand ---------- */
+const KEY='lernpfad-bibel-gott-v1';
+const blank=()=>({team:'',cur:'start',pts:0,sp:{},start:0,end:0,done:{},data:{}});
+let S=load()||blank();
+function load(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function D(k,v){if(v===undefined)return S.data[k];S.data[k]=v;save()}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function shuffle(a,seed){a=a.slice();let s=seed||7;for(let i=a.length-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function pop(t){const p=document.getElementById('pop');p.textContent=t;p.className='pop show';clearTimeout(p._t);p._t=setTimeout(()=>p.className='pop',1300)}
+function addPts(n,st,label){if(n>0){S.pts+=n;S.sp[st]=(S.sp[st]||0)+n;save();upd();pop('+'+n+' Punkte'+(label?' · '+label:''))}}
+function taskDone(st,key){D(key+'_ok',1);const s=SID[st];if(s.tasks.every(k=>D(k+'_ok'))&&!S.done[st]){S.done[st]=true;save();setTimeout(()=>pop('Station geschafft!'),900)}}
+const isOk=k=>!!D(k+'_ok');
+
+function unlocked(st){if(LEHRER)return true;const s=SID[st];
+  if(s.part===1)return true;
+  if(s.part===2)return ST.filter(x=>x.part===1).every(x=>S.done[x.id]);
+  if(st==='check')return ST.filter(x=>x.part<3).every(x=>S.done[x.id]);
+  if(st==='bonus')return !!S.done.check;return false}
+function nextOpen(){return ST.find(s=>!S.done[s.id]&&unlocked(s.id)&&!s.bonus)}
+
+/* ---------- Rahmen ---------- */
+function upd(){
+  document.getElementById('pts').textContent=S.pts;
+  document.getElementById('teamName').innerHTML=esc(S.team)+'<small>LERNPFAD · WIE SPRICHT DIE BIBEL VON GOTT?</small>';
+  document.getElementById('prog').innerHTML=ST.map(s=>`<span title="${s.t}" class="${s.bonus?'bonus ':''}${S.done[s.id]?'done':''} ${S.cur===s.id?'now':''}"></span>`).join('');
+}
+function tick(){if(!S.start)return;const t=Math.floor(((S.end||Date.now())-S.start)/1000);const e=document.getElementById('time');if(e)e.textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0')}
+setInterval(tick,1000);
+function go(id){S.cur=id;save();render(true);window.scrollTo({top:0,behavior:'smooth'})}
+function render(anim){
+  const pg=document.getElementById('page');const id=S.cur;
+  document.getElementById('bar').style.display=id==='start'?'none':'block';
+  upd();tick();
+  const st=SID[id];pg.className='page'+(st?(st.part===1?' at':st.part===2?' nt':''):'');
+  pg.innerHTML=(R[id]||R.karte)();
+  if(anim){pg.style.animation='none';pg.offsetHeight;pg.style.animation=''}
+  (H[id]||(()=>{}))();
+  bindWidgets();
+}
+const R={},H={};
+
+/* ---------- Bausteine ---------- */
+function stHead(id){const s=SID[id];const part=s.part===1?'Teil 1 · Altes Testament':s.part===2?'Teil 2 · Neues Testament':s.bonus?'Bonus':'Abschluss';
+  const k=s.part===1?'at':s.part===2?'nt':s.bonus?'bonus':'';const nr=ST.indexOf(s)+1;
+  return `<span class="kicker ${k}">${I.book}${s.bonus?'Bonusstation':s.id==='check'?'Abschluss-Check':'Station '+nr+' · '+part}</span>
+  <div class="shead"><div class="ic" style="background:${s.col}">${I[s.ic]}</div><div><h1>${s.t}</h1><div class="sub">${s.s}</div></div></div>
+  <div class="meta"><span>${s.soz}</span><span>max. ${s.max} Punkte</span></div>`}
+function hT(n,title,pts,key){return `<h2><span class="n">${n}</span>${title}${pts?`<span class="pt ${key&&isOk(key)?'ok':''}">${key&&isOk(key)?'✓ erledigt':pts+' P.'}</span>`:''}</h2>`}
+function stNav(id){const s=SID[id];const nx=nextOpen();const done=S.done[id];
+  let right='';
+  if(done){if(nx)right=`<button class="btn gold" onclick="go('${nx.id}')">Weiter: ${nx.t} →</button>`;
+    else if(!S.done.bonus&&unlocked('bonus')&&id!=='bonus')right=`<button class="btn gold" onclick="go('bonus')">⭐ Zur Bonusstation →</button>`;
+    else right=`<button class="btn gold" onclick="finishAll()">Zur Punktekarte →</button>`}
+  else right=`<span class="hint">Löse alle Aufgaben dieser Station.</span>`;
+  return `<div class="nav"><button class="btn ghost" onclick="go('karte')">${I.map} Karte</button>${right}</div>`}
+function finishAll(){if(!S.end){S.end=Date.now();save()}go('ziel')}
+
+/* Multiple Choice: eine richtige Antwort, Punkte sinken bei Fehlversuchen */
+function mc(st,key,q,opts,right,expl,pts){const a=D(key);const tries=D(key+'t')||[];
+  return `${q?`<p class="task">${q}</p>`:''}<div class="opts" data-mc="${key}" data-st="${st}" data-r="${right}" data-p="${pts}">${opts.map((o,i)=>{
+    let c='';if(a!==undefined&&i===right)c='right';else if(tries.includes(i))c='wrong';
+    return `<button class="opt ${c}" data-i="${i}" ${a!==undefined?'disabled':''}><b>${'ABCD'[i]}</b><span>${o}</span></button>`}).join('')}</div>
+  ${a!==undefined&&expl?`<div class="expl">${expl}</div>`:''}`}
+/* Freitext */
+function txt(st,key,ph,min,pts){const v=D(key)||'';const done=isOk(key);
+  return `<textarea data-tx="${key}" data-st="${st}" data-min="${min}" data-p="${pts}" maxlength="400" placeholder="${ph}" ${done?'readonly':''}>${esc(v)}</textarea>
+  <div class="cnt ${done?'ok':''}" id="${key}c">${done?'✓ abgegeben':'noch '+Math.max(0,min-v.trim().length)+' Zeichen'}</div>
+  ${done?'':`<div style="margin-top:8px"><button class="btn" id="${key}b">Abgeben (+${pts})</button></div>`}`}
+/* Zuordnen: Kärtchen antippen, dann Ziel antippen */
+function match(st,key,items,targets,pts,cls){const m=D(key)||{};
+  return `<div class="targets ${cls||''}" data-mt="${key}">${targets.map(t=>`<div class="tg ${t.txt?'txt':''} ${m[t.id]?'ok':''}" data-k="${t.id}">${t.ic?I[t.ic]:''}${t.label}${m[t.id]&&t.m?`<div class="m">${t.m}</div>`:''}</div>`).join('')}</div>
+  <div class="chips" data-mi="${key}" data-st="${st}" data-p="${pts}" data-n="${items.length}">${items.map(i=>`<button class="chip ${m[i.id]?'ok':''}" data-k="${i.id}" ${m[i.id]?'disabled':''}>${i.label}</button>`).join('')}</div>`}
+/* Sortieren in zwei Kategorien, ein Versuch je Karte */
+function sort2(st,key,items,cats,pts){const a=D(key)||{};
+  return `<div class="sort" data-so="${key}" data-st="${st}" data-p="${pts}" data-n="${items.length}">${items.map((it,i)=>`<div class="sitem"><div class="t">${it[0]}</div><div class="cs" data-i="${i}" data-r="${it[1]}">${cats.map((c,j)=>{let cl='';if(a[i]!==undefined){if(j===it[1])cl='right';else if(j===a[i])cl='wrong'}return `<button class="cbtn ${cl}" data-j="${j}" ${a[i]!==undefined?'disabled':''}>${c}</button>`}).join('')}</div></div>`).join('')}</div>`}
+/* Reihenfolge */
+function order(st,key,evs,pts){const placed=D(key)||[];const err=D(key+'e')||{};const pool=shuffle(evs.map((e,i)=>i),13).filter(i=>!placed.includes(i));
+  return `<div class="timeline">${evs.map((e,i)=>placed[i]!==undefined?`<div class="tl">${evs[placed[i]]}</div>`:`<div class="tl empty">${i===placed.length?'Was passiert als Nächstes? Tippe unten.':'…'}</div>`).join('')}</div>
+  ${pool.length?`<div class="pool" data-or="${key}" data-st="${st}" data-p="${pts}" data-n="${evs.length}">${pool.map(i=>`<button class="chip" data-i="${i}">${evs[i]}</button>`).join('')}</div>`:''}`}
+
+function bindWidgets(){
+  // MC
+  document.querySelectorAll('[data-mc]').forEach(box=>{const key=box.dataset.mc,st=box.dataset.st,r=+box.dataset.r,p=+box.dataset.p;
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,tries=D(key+'t')||[];
+      if(i===r){D(key,i);addPts(tries.length===0?p:tries.length===1?Math.round(p/2):0,st,tries.length?'':'Volltreffer!');taskDone(st,key);render(false)}
+      else{tries.push(i);D(key+'t',tries);b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('shake'),400)}})});
+  // Text
+  document.querySelectorAll('[data-tx]').forEach(t=>{const key=t.dataset.tx,st=t.dataset.st,min=+t.dataset.min,p=+t.dataset.p;const c=document.getElementById(key+'c'),b=document.getElementById(key+'b');
+    if(!b)return;const chk=()=>{const n=t.value.trim().length;c.textContent=n>=min?'✓ lang genug':'noch '+(min-n)+' Zeichen';c.className='cnt'+(n>=min?' ok':'');b.disabled=n<min};
+    t.oninput=()=>{D(key,t.value);chk()};chk();b.onclick=()=>{addPts(p,st,'gut formuliert!');taskDone(st,key);render(false)}});
+  // Zuordnen
+  document.querySelectorAll('[data-mi]').forEach(box=>{const key=box.dataset.mi,st=box.dataset.st,p=+box.dataset.p,n=+box.dataset.n;let sel=null;
+    const tg=document.querySelector(`[data-mt="${key}"]`);
+    box.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{box.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');sel=c.dataset.k});
+    tg.querySelectorAll('.tg').forEach(t=>t.onclick=()=>{const m=D(key)||{},tr=D(key+'t')||{};if(!sel||m[t.dataset.k]){t.classList.add('shake');setTimeout(()=>t.classList.remove('shake'),400);return}
+      if(t.dataset.k===sel){m[sel]=1;D(key,m);addPts(tr[sel]?Math.round(p/2):p,st);if(Object.keys(m).length===n)taskDone(st,key);render(false)}
+      else{tr[sel]=1;D(key+'t',tr);t.classList.add('shake');const c=box.querySelector('.chip.on');c&&c.classList.add('shake');setTimeout(()=>{t.classList.remove('shake');c&&c.classList.remove('shake')},400)}})});
+  // Sortieren
+  document.querySelectorAll('[data-so]').forEach(box=>{const key=box.dataset.so,st=box.dataset.st,p=+box.dataset.p,n=+box.dataset.n;
+    box.querySelectorAll('.cs').forEach(g=>g.querySelectorAll('.cbtn').forEach(b=>b.onclick=()=>{const a=D(key)||{};const i=+g.dataset.i;if(a[i]!==undefined)return;
+      a[i]=+b.dataset.j;D(key,a);if(a[i]===+g.dataset.r)addPts(p,st,'richtig!');if(Object.keys(a).length===n)taskDone(st,key);render(false)}))});
+  // Reihenfolge
+  document.querySelectorAll('[data-or]').forEach(box=>{const key=box.dataset.or,st=box.dataset.st,p=+box.dataset.p,n=+box.dataset.n;
+    box.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const placed=D(key)||[],err=D(key+'e')||{};const pos=placed.length;const i=+c.dataset.i;
+      if(i===pos){placed.push(i);D(key,placed);addPts(err[pos]?Math.round(p/2):p,st);if(placed.length===n)taskDone(st,key);render(false)}
+      else{err[pos]=1;D(key+'e',err);c.classList.add('shake');setTimeout(()=>c.classList.remove('shake'),400)}})});
+}
+
+/* ---------- START ---------- */
+R.start=()=>`<div class="hero"><div class="badge">${I.book}</div>
+<span class="kicker">Evangelische Religionslehre 10 · Die Frage nach Gott</span>
+<h1 style="margin-top:12px;font-size:34px">Wie spricht die Bibel von Gott?</h1>
+<p>Ein Lernpfad durch das Alte und das Neue Testament</p>
+<div class="rules">
+ <div><b>Zu zweit</b>Ihr arbeitet als Team mit einem iPad. Euer GoodNotes-Heft liegt bereit.</div>
+ <div><b>Lernpfad</b>Teil 1 (Altes Testament) in dieser Stunde, Teil 2 (Neues Testament) in der nächsten. Euer Fortschritt bleibt gespeichert.</div>
+ <div><b>Punkte</b>Richtig beim ersten Versuch bringt die volle Punktzahl. Am Ende wartet eine ⭐ Bonusstation.</div>
+</div>
+<p style="font-weight:700">Wie heißt euer Team?</p>
+<input type="text" id="team" maxlength="30" placeholder="z. B. Lena & Ben" value="${esc(S.team)}">
+<div style="margin-top:18px"><button class="btn gold" onclick="startGame()">Lernpfad starten →</button></div>
+${S.start?`<div style="margin-top:12px"><button class="reset" onclick="resetAll(this)">Von vorne beginnen (neues Team)</button></div>`:''}
+</div>`;
+function startGame(){const e=document.getElementById('team');const t=e.value.trim();if(t.length<2){e.classList.add('shake');setTimeout(()=>e.classList.remove('shake'),400);return}
+  S.team=t;if(!S.start)S.start=Date.now();save();go('karte')}
+function resetAll(b){if(b.dataset.c){try{localStorage.removeItem(KEY)}catch(e){}S=blank();render(true)}else{b.dataset.c=1;b.textContent='Wirklich alles löschen? Nochmal tippen.'}}
+
+/* ---------- KARTE ---------- */
+R.karte=()=>{const nx=nextOpen();
+  const card=s=>{const lk=!unlocked(s.id),dn=S.done[s.id];const nr=ST.indexOf(s)+1;
+    return `<button class="stc ${dn?'done':''} ${lk?'lock':''} ${nx&&nx.id===s.id?'next':''}" ${lk?'disabled':''} onclick="go('${s.id}')">
+    <div class="ic" style="background:${s.col}">${lk?I.lock:I[s.ic]}${dn?`<span class="ck">${I.check}</span>`:''}</div>
+    <div><div class="no">${s.bonus?'Bonus':s.id==='check'?'Abschluss':'Station '+nr}</div><div class="t">${s.t}</div><div class="s">${s.s}</div></div>
+    <div class="p">${dn?'✓ ':''}${S.sp[s.id]||0}/${s.max}</div></button>`};
+  const allMain=ST.filter(s=>!s.bonus).every(s=>S.done[s.id]);
+  return `<span class="kicker">${I.map}Eure Karte</span>
+<h1 style="margin-top:12px">Wie spricht die Bibel von Gott?</h1>
+<p>Wählt eine Station. Im Alten Testament ist die Reihenfolge frei. Teil 2 öffnet sich, wenn Teil 1 geschafft ist.</p>
+<div class="zone at"><h3>${I.tablet}Teil 1 · Altes Testament <small>Stunde 1</small></h3><div class="path">${ST.filter(s=>s.part===1).map(card).join('')}</div></div>
+<div class="zone nt"><h3>${I.heart}Teil 2 · Neues Testament <small>Stunde 2</small></h3><div class="path">${ST.filter(s=>s.part===2).map(card).join('')}</div></div>
+<div class="zone end"><h3>${I.flag}Ziel</h3><div class="path">${ST.filter(s=>s.part===3).map(card).join('')}</div></div>
+<div class="nav"><button class="btn ghost" onclick="go('ergebnis')">${I.pdf} Ergebnisse für GoodNotes</button>
+${allMain?`<button class="btn gold" onclick="finishAll()">Zur Punktekarte →</button>`:nx?`<button class="btn gold" onclick="go('${nx.id}')">Weiter: ${nx.t} →</button>`:''}</div>
+<div class="sol">Lehrkraft: Fortschritt wird nur lokal auf dem iPad gespeichert (gleiches Gerät + gleicher Browser für Stunde 2 verwenden).</div>`};
+
+/* ---------- S1 Dornbusch ---------- */
+const HEB=[['י','J (Jod)'],['ה','H (He)'],['ו','W (Waw)'],['ה','H (He)']];
+R.s1=()=>{const h=D('s1heb')||[];const done=isOk('s1heb');const pool=[2,1,0,3];
+  return `${stHead('s1')}
+<div class="story"><p>Mose lebt als Hirte in der Wüste. Früher ist er aus Ägypten geflohen. Dort müssen die Israeliten, sein Volk, als Sklaven für den Pharao schuften.</p>
+<p>Eines Tages treibt Mose seine Schafe bis an den Gottesberg Horeb. Da sieht er etwas Seltsames: Ein Dornbusch brennt – aber er verbrennt nicht. Neugierig geht Mose näher. Da ruft eine Stimme aus dem Busch: „Mose, Mose! Komm nicht näher! Zieh deine Schuhe aus, denn der Ort, auf dem du stehst, ist heiliger Boden.“</p>
+<p>Gott sagt: „Ich habe das Elend meines Volkes in Ägypten gesehen und ihr Schreien gehört. Ich will sie befreien. Geh zum Pharao und führe mein Volk aus Ägypten!“ Mose hat Angst: „Wer bin ich schon? Und wenn die Israeliten mich fragen, wie der Gott heißt, der mich schickt – was soll ich dann sagen?“ Da antwortet Gott:</p></div>
+<div class="verse">„Ich werde sein, der ich sein werde.“<cite>2. Mose 3,14 · <a href="${BS('2.Mose3')}" target="_blank" rel="noopener">ganzes Kapitel lesen ↗</a></cite></div>
+<div class="info">${I.bulb}<div><b>Der Gottesname JHWH:</b> Im Hebräischen besteht er aus vier Buchstaben: J – H – W – H. Man kann ihn übersetzen mit <b>„Ich bin da“</b>, „Ich bin, der ich bin“ oder „Ich werde da sein“. Aus Ehrfurcht sprechen Jüdinnen und Juden den Namen nicht aus. Beim Lesen sagen sie „Adonai“ (Herr). Die Lutherbibel schreibt deshalb <b>HERR</b> in Großbuchstaben.</div></div>
+
+${hT(1,'Schreibe den Gottesnamen auf Hebräisch',10,'s1heb')}
+<p class="task">Hebräisch liest man von <b>rechts nach links</b>. Tippe die Buchstaben in der Reihenfolge J – H – W – H an.</p>
+<div class="hres">${[0,1,2,3].map(i=>h[i]!==undefined?HEB[h[i]][0]:'<i>·</i>').join('')}</div>
+${done?'<p class="hint" style="text-align:center">יהוה – so steht der Gottesname in der hebräischen Bibel.</p>':`<div class="heb">${pool.map(i=>`<button class="hl ${h.includes(i)?'used':''}" data-h="${i}" ${h.includes(i)?'disabled':''}><span class="h">${HEB[i][0]}</span><span class="l">${HEB[i][1]}</span></button>`).join('')}</div>`}
+
+${hT(2,'Was der Name bedeutet',10,'s1a')}
+${mc('s1','s1a','Was sagt der Name „Ich werde sein, der ich sein werde“ über Gott aus?',[
+ 'Gott hat einen Namen wie jeder andere, der nichts Besonderes bedeutet.',
+ 'Gott lässt sich nicht festlegen – und verspricht zugleich: Ich bin für euch da.',
+ 'Gott will unerkannt bleiben und sich nicht um die Menschen kümmern.',
+ 'Gott war nur früher da, in der Zeit von Mose.'],1,
+ '<b>Genau!</b> Der Name ist ein <b>Versprechen</b>: Gott ist da – gerade für Menschen in Not wie die Sklaven in Ägypten. Gleichzeitig kann man Gott nicht in einen Namen „einsperren“.',10)}
+
+${hT(3,'Warum zieht Mose die Schuhe aus?',10,'s1b')}
+${mc('s1','s1b','',[
+ 'Weil es in der Wüste sehr heiß ist.',
+ 'Damit er schneller weglaufen kann.',
+ 'Als Zeichen der Ehrfurcht: Hier begegnet er dem heiligen Gott.',
+ 'Weil Schuhe in Ägypten verboten waren.'],2,
+ '<b>Richtig.</b> „Heilig“ heißt: ganz anders, besonders, zu Gott gehörig. Mose zeigt Respekt – so wie man heute z. B. in einer Moschee die Schuhe auszieht.',10)}
+
+${hT(4,'Denkaufgabe ✎',10,'s1t')}
+<p class="task">Gott verspricht: „Ich bin da.“ Wann oder wo würdest du dir wünschen, dass dieses Versprechen für dich oder andere gilt? <span class="hint">(mind. 50 Zeichen)</span></p>
+${txt('s1','s1t','Ich würde mir wünschen, dass Gott da ist, wenn …',50,10)}
+<div class="sol">1: י ה ו ה (rechts beginnend) · 2: B · 3: C · 4: individuell, z. B. bei Krankheit, Prüfungsangst, Streit in der Familie, für Menschen im Krieg.</div>
+${stNav('s1')}`};
+H.s1=()=>{document.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{const h=D('s1heb')||[],err=D('s1hebe')||0;const pos=h.length;const want=[0,1,2,3][pos];const i=+b.dataset.h;
+  const ok=HEB[i][0]===HEB[want][0]&&HEB[i][1].charAt(0)===HEB[want][1].charAt(0);
+  if(ok){h.push(i);D('s1heb',h);if(h.length===4){addPts(err===0?10:err===1?5:2,'s1','Shalom!');taskDone('s1','s1heb')}render(false)}
+  else{D('s1hebe',err+1);b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),400)}})};
+
+/* ---------- S2 Bilderverbot ---------- */
+const S2I=[['Eine goldene Stierfigur, vor der Menschen tanzen und die sie „Gott“ nennen',0],
+ ['„Der HERR ist mein Hirte.“ <small>(Psalm 23,1)</small>',1],
+ ['Ein Gemälde, das behauptet: „Genau so sieht Gott aus.“',0],
+ ['„Ich will euch trösten, wie einen seine Mutter tröstet.“ <small>(Jesaja 66,13)</small>',1],
+ ['Eine Statue im Tempel, der man Opfer bringt, damit sie hilft',0],
+ ['„Gott ist Licht.“ <small>(1. Johannes 1,5)</small>',1]];
+const S2C=['Bildnis (verboten)','Sprachbild (erlaubt)'];
+R.s2=()=>`${stHead('s2')}
+<div class="verse">„Ich bin der HERR, dein Gott, der ich dich aus Ägyptenland, aus der Knechtschaft, geführt habe. […] Du sollst dir kein Bildnis noch irgendein Gleichnis machen, weder von dem, was oben im Himmel, noch von dem, was unten auf Erden, noch von dem, was im Wasser unter der Erde ist.“<cite>2. Mose 20,2.4 · <a href="${BS('2.Mose20')}" target="_blank" rel="noopener">nachlesen ↗</a></cite></div>
+<div class="info">${I.bulb}<div>Die Nachbarvölker Israels hatten <b>Götterstatuen</b> aus Holz, Stein oder Gold. Man stellte sie in Tempel, brachte ihnen Opfer und glaubte, die Gottheit wohne in der Figur. Israel soll das nicht tun. Das bekannteste Gegenbeispiel: das <b>Goldene Kalb</b> (2. Mose 32). Aber: Die Bibel selbst spricht ständig in <b>Sprachbildern</b> von Gott.</div></div>
+
+${hT(1,'Bildnis oder Sprachbild?',30,'s2sort')}
+<p class="task">Was wäre nach 2. Mose 20,4 ein verbotenes <b>Bildnis</b> – und was ist ein <b>Sprachbild</b>, mit dem die Bibel selbst von Gott spricht? Nur ein Versuch pro Karte (je 5 Punkte).</p>
+${sort2('s2','s2sort',S2I,S2C,5)}
+
+${hT(2,'Warum keine Bilder?',10,'s2a')}
+${mc('s2','s2a','Warum verbietet die Bibel, sich ein Bildnis von Gott zu machen?',[
+ 'Weil Kunst und Malen in der Bibel grundsätzlich verboten sind.',
+ 'Weil ein Bildnis Gott festlegt. Gott ist größer als jedes Bild und lässt sich nicht besitzen oder benutzen.',
+ 'Weil die Israeliten nicht malen konnten.',
+ 'Weil Gott unsichtbar sein will, damit niemand an ihn glaubt.'],1,
+ '<b>Genau!</b> Ein Bildnis tut so, als hätte man Gott „im Griff“. Erinnert ihr euch an die Blinden und den Elefanten? Jedes Bild zeigt nur einen Teil.',10)}
+
+${hT(3,'Stellung nehmen ✎',10,'s2t')}
+<p class="task">Die Bibel verbietet Bilder von Gott – und spricht trotzdem selbst in Bildern von Gott (Hirte, Licht, Mutter). Ist das ein Widerspruch? Begründe. <span class="hint">(mind. 60 Zeichen)</span></p>
+${txt('s2','s2t','Wir finden, dass … , weil …',60,10)}
+<div class="sol">1: Bildnis = Stier, Gemälde, Statue · Sprachbild = Hirte, Mutter, Licht · 2: B · 3: z. B. kein Widerspruch: Sprachbilder sind Vergleiche („wie“), sie legen Gott nicht fest und man betet sie nicht an; mehrere Bilder ergänzen sich.</div>
+${stNav('s2')}`;
+
+/* ---------- S3 Exodus ---------- */
+const S3E=['Die Israeliten müssen in Ägypten als Sklaven für den Pharao arbeiten.',
+ 'Gott beruft Mose am brennenden Dornbusch.',
+ 'Mose fordert vom Pharao: „Lass mein Volk ziehen!“',
+ 'Gott führt das Volk aus Ägypten und rettet es am Schilfmeer.',
+ 'Am Berg Sinai gibt Gott dem Volk die Zehn Gebote.',
+ 'Das Volk schließt einen Bund mit Gott und verspricht, auf ihn zu hören.'];
+R.s3=()=>`${stHead('s3')}
+<div class="story"><p>Die Geschichte vom Auszug aus Ägypten heißt <b>Exodus</b> (griechisch: Auszug). Sie ist für Israel die wichtigste Erfahrung mit Gott: <b>Gott befreit.</b> Bis heute erinnern Jüdinnen und Juden beim Pessach-Fest daran.</p></div>
+
+${hT(1,'Bringt die Geschichte in die richtige Reihenfolge',30,'s3ord')}
+<p class="task">Tippt immer das Ereignis an, das als Nächstes kommt (je 5 Punkte, bei Fehlversuch 3).</p>
+${order('s3','s3ord',S3E,5)}
+
+<div class="verse">„Alles, was der HERR gesagt hat, wollen wir tun und darauf hören.“<cite>2. Mose 24,7 · <a href="${BS('2.Mose24')}" target="_blank" rel="noopener">nachlesen ↗</a></cite></div>
+<div class="info">${I.handshake}<div><b>Bund</b> bedeutet: eine feste, verlässliche Beziehung – wie ein gegenseitiges Versprechen. Gott sagt: „Ich bin euer Gott, ich bin für euch da.“ Das Volk sagt: „Wir hören auf dich.“ Die Zehn Gebote sind die Regeln dieses Bundes.</div></div>
+
+${hT(2,'Befreiung zuerst',10,'s3a')}
+${mc('s3','s3a','Die Zehn Gebote beginnen mit: „Ich bin der HERR, dein Gott, der ich dich aus Ägyptenland, aus der Knechtschaft, geführt habe.“ Warum steht dieser Satz am Anfang?',[
+ 'Damit klar ist, dass Gott der strenge Chef ist, der Gehorsam verlangt.',
+ 'Weil Gott zuerst befreit hat. Die Gebote sollen helfen, die geschenkte Freiheit zu bewahren.',
+ 'Es ist nur eine Begrüßungsformel ohne Bedeutung.',
+ 'Damit auch die Ägypter die Gebote befolgen.'],1,
+ '<b>Richtig!</b> Erst kommt die Befreiung, dann die Regeln. Die Gebote sind keine Strafe, sondern Leitplanken für ein Leben in Freiheit.',10)}
+<div class="sol">Reihenfolge wie aufgelistet (Sklaverei → Dornbusch → Pharao → Schilfmeer → Sinai/Gebote → Bund) · MC: B</div>
+${stNav('s3')}`;
+
+/* ---------- S4 Psalmen ---------- */
+const PS=[
+ {id:'sheep',label:'Hirte',v:'„Der HERR ist mein Hirte, mir wird nichts mangeln.“ <small>Psalm 23,1</small>',m:'sorgt für mich und führt mich'},
+ {id:'rock',label:'Fels',v:'„HERR, mein Fels, meine Burg, mein Erretter.“ <small>Psalm 18,3</small>',m:'gibt Halt, wenn alles wackelt'},
+ {id:'feather',label:'Flügel',v:'„Er wird dich mit seinen Fittichen decken, und Zuflucht wirst du haben unter seinen Flügeln.“ <small>Psalm 91,4</small>',m:'schützt mich in Gefahr'},
+ {id:'sun',label:'Licht',v:'„Der HERR ist mein Licht und mein Heil; vor wem sollte ich mich fürchten?“ <small>Psalm 27,1</small>',m:'gibt Hoffnung im Dunkeln'},
+ {id:'mother',label:'Mutter',v:'„Ich will euch trösten, wie einen seine Mutter tröstet.“ <small>Jesaja 66,13</small>',m:'tröstet und ist zärtlich nah'}];
+R.s4=()=>`${stHead('s4')}
+<div class="info">${I.music}<div>Die <b>Psalmen</b> sind 150 Gebete und Lieder im Alten Testament. Menschen bringen darin alles vor Gott: Freude, Dank, Angst und Klage. Um auszudrücken, wie sie Gott erleben, benutzen sie <b>Bilder</b> aus ihrem Alltag. Auch die Propheten tun das.</div></div>
+
+${hT(1,'Welches Bild gehört zu welchem Vers?',25,'s4m')}
+<p class="task">Tippt einen Vers an, dann das passende Bild (je 5 Punkte).</p>
+${match('s4','s4m',shuffle(PS,3).map(p=>({id:p.id,label:p.v})),PS.map(p=>({id:p.id,label:p.label,ic:p.id,m:p.m})),5)}
+
+${hT(2,'Gott ist für mich wie … ✎',10,'s4t')}
+<p class="task">Welches Bild passt für dich am besten zu Gott – eines von oben oder ein ganz eigenes? Begründe. Wenn du nicht an Gott glaubst: Welches Bild würde für gläubige Menschen gut passen und warum? <span class="hint">(mind. 50 Zeichen)</span></p>
+${txt('s4','s4t','Gott ist für mich wie …, weil …',50,10)}
+<div class="sol">Hirte – Ps 23 · Fels – Ps 18 · Flügel – Ps 91 · Licht – Ps 27 · Mutter – Jes 66</div>
+${stNav('s4')}`;
+
+/* ---------- S5 Abba / Vaterunser ---------- */
+const VU=[
+ {id:'v1',label:'„Vater unser im Himmel, geheiligt werde dein Name.“',p:'Gott, du bist uns nah wie ein guter Vater – und doch größer als alles. Wir haben Respekt vor dir.'},
+ {id:'v2',label:'„Dein Wille geschehe, wie im Himmel, so auf Erden.“',p:'Lass passieren, was du für gut hältst – nicht nur das, was ich will.'},
+ {id:'v3',label:'„Unser tägliches Brot gib uns heute.“',p:'Sorg dafür, dass wir alle genug zum Leben haben.'},
+ {id:'v4',label:'„Und vergib uns unsere Schuld, wie auch wir vergeben unsern Schuldigern.“',p:'Verzeih uns, was wir falsch machen – und hilf uns, anderen auch zu verzeihen.'}];
+R.s5=()=>`${stHead('s5')}
+<div class="story"><p>In der Nacht vor seinem Tod betet Jesus im Garten Gethsemane. Er hat große Angst. Da betet er:</p></div>
+<div class="verse">„Abba, mein Vater, alles ist dir möglich; nimm diesen Kelch von mir; doch nicht, was ich will, sondern was du willst!“<cite>Markus 14,36 · <a href="${BS('Markus14')}" target="_blank" rel="noopener">nachlesen ↗</a></cite></div>
+<div class="info">${I.bulb}<div><b>Abba</b> ist aramäisch, die Sprache Jesu. So haben Kinder ihren Vater genannt – ein vertrautes Wort, ungefähr wie „Papa“ oder „lieber Vater“. Auch seinen Jüngern bringt Jesus ein Gebet bei, das so beginnt: <b>„Unser Vater im Himmel!“</b> (Matthäus 6,9).</div></div>
+
+${hT(1,'Was ist besonders an „Abba“?',10,'s5a')}
+${mc('s5','s5a','',[
+ 'Jesus zeigt, dass Gott ein Mann ist.',
+ 'Jesus zeigt ein ganz nahes, vertrautes Verhältnis zu Gott: Gott ist nicht fern, man kann mit ihm reden wie ein Kind mit einem liebevollen Vater.',
+ 'Jesus will sagen, dass Gott streng ist und Gehorsam verlangt.',
+ 'Abba war ein Titel für Könige.'],1,
+ '<b>Genau!</b> „Vater“ ist ein <b>Sprachbild</b>, kein Foto: Gott ist weder Mann noch Frau. Die Bibel sagt auch, Gott tröstet wie eine Mutter (Jes 66,13).',10)}
+<div class="info warm">${I.heart}<div>Nicht jede und jeder hat gute Erfahrungen mit dem eigenen Vater. Das Bild meint einen Vater, wie man ihn sich im allerbesten Sinn wünscht: liebevoll, verlässlich, da.</div></div>
+
+${hT(2,'Das Vaterunser in heutiger Sprache',20,'s5m')}
+<p class="task">Ordnet jeder Zeile des Vaterunsers die passende Übersetzung in heutiger Sprache zu (je 5 Punkte).</p>
+${match('s5','s5m',shuffle(VU,9).map(v=>({id:v.id,label:v.p})),VU.map(v=>({id:v.id,label:v.label,txt:true})),5,'t4')}
+
+${hT(3,'Eure eigene Zeile ✎',10,'s5t')}
+<p class="task">Wählt eine Zeile des Vaterunsers und formuliert sie so, wie ihr sie heute sagen würdet. <span class="hint">(mind. 40 Zeichen)</span></p>
+${txt('s5','s5t','„Dein Reich komme“ heißt für uns: …',40,10)}
+<div class="sol">1: B · 2: v1 „im Himmel“ ↔ nah & größer; v2 Wille ↔ was du für gut hältst; v3 Brot ↔ genug zum Leben; v4 Schuld ↔ verzeihen</div>
+${stNav('s5')}`;
+
+/* ---------- S6 Gleichnis ---------- */
+const SC=[
+ 'Ein Vater hat zwei Söhne. Der jüngere sagt: „Gib mir jetzt schon mein Erbe!“ Das ist damals unerhört – fast so, als würde er sagen: „Für mich bist du schon tot.“ Der Vater gibt ihm das Geld.',
+ 'Der Sohn zieht in ein fernes Land und verprasst alles. Dann kommt eine Hungersnot. Er muss Schweine hüten – für einen Juden damals das Allerletzte – und hätte am liebsten ihr Futter gegessen.',
+ 'Da denkt er: „Bei meinem Vater haben sogar die Arbeiter genug zu essen. Ich gehe zurück und sage: Ich bin es nicht mehr wert, dein Sohn zu heißen. Mach mich zu einem deiner Arbeiter.“ Er macht sich auf den Weg.'];
+const PRED=['Er lässt ihn vor der Tür stehen.','Er nimmt ihn als Arbeiter auf – zur Strafe.','Er verlangt, dass er erst alles zurückzahlt.','Er läuft ihm entgegen und umarmt ihn.'];
+R.s6=()=>{const pr=D('s6pred');return `${stHead('s6')}
+<div class="info">${I.bulb}<div>Ein <b>Gleichnis</b> ist eine Vergleichsgeschichte. Jesus erzählt sie Menschen, die sich darüber aufregen, dass er mit „Sündern“ zusammen isst (Lukas 15,1–2). Mit dem Gleichnis zeigt er, wie Gott ist.</div></div>
+${SC.map((s,i)=>`<div class="scene"><div class="no">${i+1}</div><p>${s}</p></div>`).join('')}
+
+${hT(1,'Was vermutet ihr?','', '')}
+<p class="task">Was meint ihr: Wie reagiert der Vater, als er seinen Sohn kommen sieht? <span class="hint">(keine Punkte – einfach tippen)</span></p>
+<div class="opts">${PRED.map((o,i)=>`<button class="opt ${pr!==undefined?(i===3?'right':i===pr?'picked':''):''}" data-pr="${i}" ${pr!==undefined?'disabled':''}><b>${'ABCD'[i]}</b><span>${o}</span></button>`).join('')}</div>
+${pr!==undefined?`${pr===3?'<p class="hint">Gut vermutet!</p>':'<p class="hint">Überraschend, oder? So reagiert der Vater:</p>'}
+<div class="scene"><div class="no">4</div><p>„Als er aber noch weit entfernt war, sah ihn sein Vater, und es jammerte ihn; er lief und fiel ihm um den Hals und küsste ihn.“ <small class="hint">(Lukas 15,20)</small> Der Vater lässt ein Fest feiern: „Denn dieser mein Sohn war tot und ist wieder lebendig geworden; er war verloren und ist gefunden worden.“ <small class="hint">(Lukas 15,24)</small></p></div>
+<div class="scene"><div class="no">5</div><p>Der ältere Bruder kommt vom Feld und hört die Musik. Er ist wütend: „All die Jahre habe ich für dich gearbeitet – und für den da gibt es ein Fest?“ Der Vater sagt: „Mein Kind, du bist immer bei mir, und alles, was mein ist, ist dein. Aber jetzt müssen wir uns freuen.“ Ob der Bruder mitfeiert, erzählt Jesus nicht.</p></div>
+<p class="hint"><a href="${BS('Lukas15')}" target="_blank" rel="noopener" style="color:inherit">Lukas 15,11–32 ganz nachlesen ↗</a></p>
+
+${hT(2,'Wofür steht der Vater?',15,'s6a')}
+${mc('s6','s6a','',[
+ 'Für einen Vater, der seine Kinder zu sehr verwöhnt.',
+ 'Für Gott, der Menschen ohne Vorbedingung wieder aufnimmt, auch wenn sie Fehler gemacht haben.',
+ 'Für Gott, der nur die Fleißigen belohnt.',
+ 'Für die Regel, dass man Geld immer zurückzahlen muss.'],1,
+ '<b>Genau!</b> Gott wartet und läuft entgegen – bevor der Sohn sich überhaupt entschuldigen kann. Gott ist <b>barmherzig</b>. Deshalb heißt das Gleichnis heute oft „Der barmherzige Vater“.',15)}
+
+${hT(3,'Perspektivwechsel ✎',10,'s6t')}
+<p class="task">Schreibt aus der Sicht des <b>jüngeren Sohnes</b> oder des <b>älteren Bruders</b> eine kurze Nachricht an den Vater – am Abend nach dem Fest. <span class="hint">(mind. 60 Zeichen)</span></p>
+${txt('s6','s6t','Hey Papa, …',60,10)}`:''}
+<div class="sol">Vermutung: offen · 2: B · 3: individuell (jüngerer Sohn: Dankbarkeit, Scham, Erleichterung; älterer: Kränkung, Gerechtigkeitsfrage, evtl. Versöhnung)</div>
+${stNav('s6')}`};
+H.s6=()=>{document.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{D('s6pred',+b.dataset.pr);taskDone('s6','s6pred');render(false)})};
+
+/* ---------- Abschluss-Check ---------- */
+const GAPS=['da','Bilderverbot','befreit','Bund','Bildern','Abba','vergibt'];
+R.check=()=>{const a=D('chk');const opts=shuffle(GAPS,4);
+  const sel=i=>`<select data-i="${i}" ${a?'disabled':''} class="${a?(a[i]===GAPS[i]?'right':'wrong'):''}"><option value="">…</option>${opts.map(o=>`<option ${a&&a[i]===o?'selected':''}>${o}</option>`).join('')}</select>${a&&a[i]!==GAPS[i]?`<span class="fix">→ ${GAPS[i]}</span>`:''}`;
+  return `${stHead('check')}
+<p class="task">Ergänze den Merksatz. Du hast <b>einen</b> Prüfversuch (je 5 Punkte). Er kommt auch in dein Ergebnis-PDF.</p>
+<div class="merk">Am Dornbusch nennt Gott seinen Namen JHWH: „Ich bin ${sel(0)}“. Weil Gott größer ist als jede Vorstellung, gibt es das ${sel(1)}. Gott hat sein Volk aus Ägypten ${sel(2)} und am Sinai einen ${sel(3)} mit ihm geschlossen. Die Psalmen sprechen in ${sel(4)} von Gott, zum Beispiel als Hirte oder Fels. Jesus nennt Gott „${sel(5)}“ – lieber Vater. Im Gleichnis vom verlorenen Sohn zeigt Jesus: Gott ${sel(6)} den Menschen und nimmt sie wieder auf.</div>
+${a?'':'<button class="btn" id="chkb">Prüfen</button>'}
+<div class="sol">da · Bilderverbot · befreit · Bund · Bildern · Abba · vergibt</div>
+${stNav('check')}`};
+H.check=()=>{const b=document.getElementById('chkb');if(!b)return;b.onclick=()=>{const v=[...document.querySelectorAll('.merk select')].map(s=>s.value);
+  if(v.some(x=>!x)){b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),400);return}
+  const n=v.filter((x,i)=>x===GAPS[i]).length;D('chk',v);addPts(n*5,'check',n+' von 7 richtig');taskDone('check','chk');render(false)}};
+
+/* ---------- Bonus ---------- */
+const BQ=[
+ ['„Wer bin ich, dass ich zum Pharao gehe?“',['Mose','Jesus','Das Volk Israel','Der ältere Bruder'],0],
+ ['„Alles, was der HERR gesagt hat, wollen wir tun und darauf hören.“',['Der Pharao','Das Volk Israel','Ein Psalmbeter','Der jüngere Sohn'],1],
+ ['„Abba, mein Vater, alles ist dir möglich.“',['Mose','Der jüngere Sohn','Jesus','Ein Prophet'],2],
+ ['„Ich werde sein, der ich sein werde.“',['Mose','Jesus','Der Vater im Gleichnis','Gott am Dornbusch'],3],
+ ['„Er war verloren und ist gefunden worden.“',['Der Vater im Gleichnis','Mose','Der Pharao','Ein Psalmbeter'],0]];
+R.bonus=()=>`${stHead('bonus')}
+<p class="task">Wer sagt das? Jede richtige Antwort beim ersten Versuch bringt 4 Punkte.</p>
+${BQ.map((q,i)=>`<h2 style="font-size:17px"><span class="n">${i+1}</span>${q[0]}</h2>${mc('bonus','bq'+i,'',q[1],q[2],'',4)}`).join('')}
+<div class="sol">Mose · Volk Israel · Jesus · Gott am Dornbusch · Vater im Gleichnis</div>
+${stNav('bonus')}`;
+
+/* ---------- Ziel ---------- */
+function code(){const t=Math.floor(((S.end||Date.now())-S.start)/1000);const c=(S.pts*37+Math.floor(t/60)*11+S.team.length*7)%97;return S.pts+'-'+String(c).padStart(2,'0')}
+R.ziel=()=>{const t=Math.floor(((S.end||Date.now())-S.start)/1000);const pct=S.pts/MAX;
+  const rank=pct>=.9?'Bibel-Profis':pct>=.75?'Echte Pfadfinder':pct>=.5?'Gut unterwegs':'Auf dem Weg';
+  const main=ST.filter(s=>!s.bonus);
+  return `<span class="kicker">${I.flag}Geschafft!</span><h1 style="margin-top:12px">Eure Punktekarte</h1>
+<div class="card"><div style="font-weight:700;color:#CFC6E4">${esc(S.team)}</div>
+<div class="big">${S.pts}</div><div style="color:#CFC6E4;font-weight:700">Punkte · max. ${MAX} + 20 Bonus</div>
+<div class="rank">${rank}</div>
+<div class="stats"><div><b>${Math.floor(t/60)}:${String(t%60).padStart(2,'0')}</b>Minuten</div><div><b>${main.filter(s=>S.done[s.id]).length}/${main.length}</b>Stationen</div><div><b>${S.done.bonus?'⭐':'–'}</b>Bonus</div></div>
+<div class="code">${code()}</div><div style="font-size:13px;color:#CFC6E4;margin-top:6px">Zeigt diesen Code eurer Lehrkraft.</div></div>
+${LEHRER?`<div class="sol" style="display:block"><b>Code prüfen:</b> <input type="text" id="cc" placeholder="z. B. 241-34" style="max-width:160px;font-size:15px;padding:6px 10px"> Team: <input type="text" id="ct" placeholder="Teamname" style="max-width:160px;font-size:15px;padding:6px 10px"> Minuten: <input type="text" id="cm" placeholder="40" style="max-width:70px;font-size:15px;padding:6px 10px"> <button class="btn" style="padding:6px 12px;font-size:14px" onclick="chkCode()">Prüfen</button> <span id="cr"></span><br>Hinweis: Der Lernpfad läuft über zwei Stunden – die Minuten sind die Gesamtzeit seit dem Start.</div>`:''}
+<div class="nav"><button class="btn ghost" onclick="go('karte')">${I.map} Karte</button><button class="btn gold" onclick="go('ergebnis')">Unsere Ergebnisse →</button></div>`};
+function chkCode(){const [p,c]=document.getElementById('cc').value.split('-').map(x=>parseInt(x));const tl=document.getElementById('ct').value.trim().length;const m=parseInt(document.getElementById('cm').value);
+  document.getElementById('cr').textContent=(p*37+m*11+tl*7)%97===c?'✓ Code passt':'✗ Code passt nicht'}
+
+/* ---------- Ergebnisse (PDF) ---------- */
+function A(k){return esc(D(k)||'')||'<span style="color:#B0A6C6">– noch nicht bearbeitet</span>'}
+function resultPages(){
+  const t=Math.floor(((S.end||Date.now())-S.start)/1000);
+  const head=(c,k,tt)=>`<div class="hd" style="background:${c}"><div><div class="k">${k}</div><div class="t">${tt}</div></div><div class="tm">Team<b>${esc(S.team)}</b>${S.pts} Punkte</div></div>`;
+  const ft=n=>`<div class="ft"><span>Lernpfad · Wie spricht die Bibel von Gott? · EvR 10 · LB 10.2</span><span>${n} / 2</span></div>`;
+  const a=D('chk')||GAPS;const g=a.map((x,i)=>x===GAPS[i]?x:GAPS[i]);
+  const p1=`<div class="a4">${head('#8A5A1F','TEIL 1 · ALTES TESTAMENT','Wie spricht die Bibel von Gott?')}
+  <div class="sec"><div class="st"><i>1</i>Der Dornbusch – Gottes Name<span>2. Mose 3</span></div>
+   <div class="two"><div class="bx s" style="display:flex;gap:14px;align-items:center"><div class="yhwh">יהוה</div><div><b>JHWH</b> – „Ich werde sein, der ich sein werde“ (Ex 3,14): <b>Ich bin da.</b> Lutherbibel: HERR. Juden sprechen den Namen aus Ehrfurcht nicht aus („Adonai“).</div></div>
+   <div><div class="lab" style="margin-top:0">Hier wünsche ich mir, dass Gott da ist:</div><div class="ans">${A('s1t')}</div></div></div></div>
+  <div class="sec"><div class="st"><i>2</i>Kein Bildnis – das Bilderverbot<span>2. Mose 20,4</span></div>
+   <div class="two"><div class="bx"><b>Bildnis (verboten):</b> Figuren oder Bilder, die Gott festlegen und angebetet werden – z. B. das Goldene Kalb.<br><b>Sprachbild (erlaubt):</b> Vergleiche wie Hirte, Licht, Mutter.<br>Gott ist größer als jedes Bild und lässt sich nicht besitzen.</div>
+   <div><div class="lab" style="margin-top:0">Widerspruch oder nicht? Unsere Meinung:</div><div class="ans">${A('s2t')}</div></div></div></div>
+  <div class="sec"><div class="st"><i>3</i>Der Gott, der befreit – Exodus und Bund</div>
+   <div class="tl5">${S3E.map((e,i)=>`<div><b>${i+1}</b>${e}</div>`).join('')}</div>
+   <div class="bx s" style="margin-top:7px"><b>Bund:</b> eine feste Beziehung, ein gegenseitiges Versprechen. Erst befreit Gott, dann gibt er die Gebote – als Leitplanken für ein Leben in Freiheit (Ex 20,2; 24,7).</div></div>
+  <div class="sec"><div class="st"><i>4</i>Bilder für Gott in den Psalmen</div>
+   <div class="ps">${PS.map(p=>`<div><b>${p.label}</b>${p.m}</div>`).join('')}</div>
+   <div class="lab">Gott ist für mich wie …</div><div class="ans">${A('s4t')}</div></div>
+  <div class="sec"><div class="st"><i>✎</i>Platz für Notizen</div><div class="lines"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+  ${ft(1)}</div>`;
+  const p2=`<div class="a4">${head('#2F6F59','TEIL 2 · NEUES TESTAMENT','Wie spricht die Bibel von Gott?')}
+  <div class="sec"><div class="st"><i>5</i>Abba – lieber Vater<span>Markus 14,36 · Matthäus 6,9</span></div>
+   <div class="bx"><b>Abba</b> (aramäisch) = vertrautes Wort für den Vater, wie „Papa“. Jesus zeigt: Gott ist nah, man kann mit ihm reden wie ein Kind mit einem liebevollen Vater. „Vater“ ist ein Sprachbild – Gott tröstet auch wie eine Mutter (Jes 66,13).</div>
+   <div class="vu" style="margin-top:7px">${VU.map(v=>`<div><b>${v.label}</b><span>${v.p}</span></div>`).join('')}</div>
+   <div class="lab">Unsere eigene Zeile:</div><div class="ans">${A('s5t')}</div></div>
+  <div class="sec"><div class="st"><i>6</i>Der barmherzige Vater<span>Lukas 15,11–32</span></div>
+   <div class="bx">Der Vater läuft dem Sohn entgegen, bevor dieser sich entschuldigen kann. So ist Gott: <b>barmherzig</b> – er nimmt Menschen ohne Vorbedingung wieder auf.</div>
+   <div class="lab">Perspektivwechsel – unsere Nachricht an den Vater:</div><div class="ans">${A('s6t')}</div></div>
+  <div class="sec"><div class="st"><i>7</i>Merksatz</div>
+   <div class="merk2">Am Dornbusch nennt Gott seinen Namen JHWH: „Ich bin <u>${g[0]}</u>“. Weil Gott größer ist als jede Vorstellung, gibt es das <u>${g[1]}</u>. Gott hat sein Volk aus Ägypten <u>${g[2]}</u> und am Sinai einen <u>${g[3]}</u> mit ihm geschlossen. Die Psalmen sprechen in <u>${g[4]}</u> von Gott, zum Beispiel als Hirte oder Fels. Jesus nennt Gott „<u>${g[5]}</u>“ – lieber Vater. Im Gleichnis vom verlorenen Sohn zeigt Jesus: Gott <u>${g[6]}</u> den Menschen und nimmt sie wieder auf.</div></div>
+  <div class="sec"><div class="st"><i>✎</i>Platz für Notizen</div><div class="lines"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+  ${ft(2)}</div>`;
+  return [p1,p2];
+}
+R.ergebnis=()=>`<span class="kicker">${I.pdf}Für dein Heft</span><h1 style="margin-top:12px">Unsere Ergebnisse</h1>
+<p>Hier ist alles zusammengestellt, was ihr bearbeitet habt – Teil 1 und Teil 2 auf je einer A4-Seite. Ihr könnt das PDF jederzeit erstellen, z. B. schon am Ende von Teil 1.</p>
+<div class="exp"><button class="btn gold" id="mkpdf">${I.pdf} PDF erstellen</button><span class="hint" id="pdfst"></span></div>
+<div class="prev" id="prev"></div>
+<div class="note"><b>So kommt das PDF in GoodNotes:</b> „In GoodNotes öffnen“ tippen → im Teilen-Menü <b>GoodNotes</b> wählen → als neues Dokument importieren oder in dein Reli-Heft einfügen.</div>
+<div class="nav"><button class="btn ghost" onclick="go('karte')">${I.map} Karte</button><button class="reset" onclick="resetAll(this)">Neues Team starten</button></div>`;
+H.ergebnis=()=>{const pv=document.getElementById('prev');const w=Math.min(pv.clientWidth,794),sc=w/794;
+  pv.innerHTML=resultPages().map(h=>`<div class="sc" style="width:${794*sc}px;height:${1123*sc}px">${h}</div>`).join('');
+  pv.querySelectorAll('.sc>.a4').forEach(e=>e.style.transform=`scale(${sc})`);
+  document.getElementById('mkpdf').onclick=makePdf};
+function loadScript(src){return new Promise((res,rej)=>{if(document.querySelector(`script[src="${src}"]`))return res();const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+let PDF=null;
+async function makePdf(){const st=document.getElementById('pdfst'),b=document.getElementById('mkpdf');b.disabled=true;st.textContent='PDF wird erstellt …';
+  try{await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');try{await document.fonts.ready}catch(e){}
+    let cap=document.getElementById('cap');if(!cap){cap=document.createElement('div');cap.id='cap';document.body.appendChild(cap)}
+    cap.innerHTML=resultPages().join('');const els=[...cap.querySelectorAll('.a4')],jpgs=[];
+    for(let i=0;i<els.length;i++){st.textContent=`Seite ${i+1} von ${els.length} …`;
+      const c=await html2canvas(els[i],{scale:2.6,backgroundColor:'#ffffff',logging:false});
+      const bl=await new Promise(r=>c.toBlob(r,'image/jpeg',0.88));jpgs.push({w:c.width,h:c.height,b:new Uint8Array(await bl.arrayBuffer())})}
+    cap.innerHTML='';
+    PDF=new File([imagePdf(jpgs)],'Lernpfad_Bibel_Gott_'+(S.team||'Team').replace(/[^A-Za-z0-9ÄÖÜäöüß]+/g,'_')+'.pdf',{type:'application/pdf'});
+    st.textContent='';
+    b.outerHTML=`<button class="btn gold" id="share">In GoodNotes öffnen</button><button class="btn ghost" id="dl">PDF herunterladen</button>`;
+    const sh=document.getElementById('share');
+    if(navigator.canShare&&navigator.canShare({files:[PDF]}))sh.onclick=()=>navigator.share({files:[PDF],title:'Lernpfad – Wie spricht die Bibel von Gott?'}).catch(()=>{});else sh.remove();
+    document.getElementById('dl').onclick=()=>{const u=URL.createObjectURL(PDF);const a=document.createElement('a');a.href=u;a.download=PDF.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)};
+  }catch(e){st.textContent='Das PDF konnte nicht erstellt werden. Ist das iPad mit dem Internet verbunden?';b.disabled=false;console.error(e)}}
+/* Minimaler PDF-Baustein: pro Seite genau ein JPEG, keine Schriften (GoodNotes-freundlich) */
+function imagePdf(imgs){const enc=new TextEncoder(),parts=[],offs=[];let len=0;
+  const add=x=>{const b=typeof x==='string'?enc.encode(x):x;parts.push(b);len+=b.length};
+  add('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n');
+  const n=imgs.length,W=595.28,Hh=841.89;const obj=(id,body)=>{offs[id]=len;add(id+' 0 obj\n');body();add('\nendobj\n')};
+  obj(1,()=>add('<< /Type /Catalog /Pages 2 0 R >>'));
+  obj(2,()=>add('<< /Type /Pages /Count '+n+' /Kids ['+imgs.map((_,i)=>(3+i*3)+' 0 R').join(' ')+'] >>'));
+  imgs.forEach((im,i)=>{const pg=3+i*3,ct=pg+1,ix=pg+2;const cs='q '+W+' 0 0 '+Hh+' 0 0 cm /Im0 Do Q';
+    obj(pg,()=>add('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+W+' '+Hh+'] /Resources << /XObject << /Im0 '+ix+' 0 R >> >> /Contents '+ct+' 0 R >>'));
+    obj(ct,()=>add('<< /Length '+cs.length+' >>\nstream\n'+cs+'\nendstream'));
+    obj(ix,()=>{add('<< /Type /XObject /Subtype /Image /Width '+im.w+' /Height '+im.h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+im.b.length+' >>\nstream\n');add(im.b);add('\nendstream')})});
+  const total=3+n*3,x=len;let xr='xref\n0 '+total+'\n0000000000 65535 f \n';
+  for(let i=1;i<total;i++)xr+=String(offs[i]).padStart(10,'0')+' 00000 n \n';
+  add(xr+'trailer\n<< /Size '+total+' /Root 1 0 R >>\nstartxref\n'+x+'\n%%EOF');
+  return new Blob(parts,{type:'application/pdf'})}
+
+if(!S.start)S.cur='start';
+render(true);
+</script>
+</body>
+</html>
