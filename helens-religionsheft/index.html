@@ -211,6 +211,7 @@ body.lehrer .sol{display:block}
     <div class="team" id="teamName"></div>
     <div class="pill" title="Zeit"><svg stroke="currentColor" stroke-width="0" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"></path></svg><span id="time">0:00</span></div>
     <div class="pill pts" title="Punkte"><svg stroke="currentColor" stroke-width="0" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg><span id="pts">0</span></div>
+    <button class="pill" id="rsb" onclick="hdrReset(this)" title="Neu starten (zweimal tippen)" style="border:none;color:#fff;font-family:inherit;cursor:pointer">↺</button>
   </div>
   <div class="prog" id="prog"></div>
 </div>
@@ -227,6 +228,9 @@ if(LEHRER){document.body.classList.add('lehrer');document.body.insertAdjacentHTM
 /* ---------- Zustand ---------- */
 const KEY='helens-heft-v1';
 let S=load()||{team:'',page:0,pts:0,start:0,end:0,done:{},data:{}};
+if(/[?&]neu\b/.test(location.search)){try{localStorage.removeItem(KEY)}catch(e){}S={team:'',page:0,pts:0,start:0,end:0,done:{},data:{}};const q=location.search.replace(/[?&]neu\b/,'').replace(/^&/,'?');history.replaceState(null,'',location.pathname+(q==='?'?'':q))}
+function hdrReset(b){if(b.dataset.c){try{localStorage.removeItem(KEY)}catch(e){}S={team:'',page:0,pts:0,start:0,end:0,done:{},data:{}};S.page=0;render(true);return}
+  b.dataset.c=1;b.textContent='Neu starten?';setTimeout(()=>{b.dataset.c='';b.textContent='↺'},3000)}
 function load(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function addPts(n,label){if(!n)return;S.pts+=n;save();upd();const p=document.getElementById('pop');p.textContent=(n>0?'+':'')+n+' Punkte'+(label?' · '+label:'');p.className='pop show'+(n<0?' neg':'');clearTimeout(p._t);p._t=setTimeout(()=>p.className='pop',1300)}
@@ -258,7 +262,7 @@ function upd(){
   const pr=document.getElementById('prog');
   pr.innerHTML=PAGES.slice(1).map((p,i)=>`<span title="${p.label}" class="${p.bonus?'bonus ':''}${S.done[p.id]?'done':''} ${S.page===i+1?'now':''}"></span>`).join('');
 }
-function tick(){if(!S.start)return;const t=Math.floor(((S.end||Date.now())-S.start)/1000);document.getElementById('time').textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0')}
+function tick(){if(!S.start)return;if(!S.end&&document.visibilityState==='visible'){S.el=(S.el||0)+1;if(S.el%5===0)save()}const t=S.el||0;document.getElementById('time').textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0')}
 setInterval(tick,1000);
 function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function shuffle(a,seed){a=a.slice();let s=seed||7;for(let i=a.length-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
@@ -508,8 +512,8 @@ H.bonus=()=>{if(D('bon'))return;document.querySelectorAll('.pic.tap').forEach(p=
   const b=document.getElementById('bonb');if(b)b.onclick=()=>{const pick=D('bonp');const n=pick.filter(k=>k==='k3'||k==='k7').length;D('bon',1);addPts(n*10,'Bonus!');finish('bonus')}};
 
 /* ---------- Ziel ---------- */
-function code(){const t=Math.floor(((S.end||Date.now())-S.start)/1000);const c=(S.pts*37+Math.floor(t/60)*11+S.team.length*7)%97;return S.pts+'-'+String(c).padStart(2,'0')}
-R.ziel=()=>{const t=Math.floor(((S.end||Date.now())-S.start)/1000);const pct=S.pts/MAX;
+function code(){const t=S.el||0;const c=(S.pts*37+Math.floor(t/60)*11+S.team.length*7)%97;return S.pts+'-'+String(c).padStart(2,'0')}
+R.ziel=()=>{const t=S.el||0;const pct=S.pts/MAX;
   const rank=pct>=.9?'Theologie-Profis':pct>=.7?'Echte Gottsucher':pct>=.5?'Gut unterwegs':'Auf dem Weg';
   const sta=PAGES.filter(p=>!['start','intro','ziel','bonus','ergebnis'].includes(p.id));const done=sta.filter(p=>S.done[p.id]).length;
   return `${kick('','Geschafft!')}
@@ -525,7 +529,7 @@ ${nav(`<button class="reset" onclick="resetAll(this)">Neues Team starten</button
 /* ---------- Ergebnisse ---------- */
 function A(id){return esc(D(id)||'')||'<span style="color:#B0A6C6">– (noch nicht bearbeitet)</span>'}
 function resultPages(){
-  const t=Math.floor(((S.end||Date.now())-S.start)/1000);
+  const t=S.el||0;
   const pick=D('s2pick');const g=s6final();
   const hd=`<div class="hd"><div><div class="k">EVANGELISCHE RELIGIONSLEHRE 10 · DIE FRAGE NACH GOTT</div><div class="t">Helens Religionsheft – unsere Ergebnisse</div></div><div class="tm">Team<b>${esc(S.team)}</b>${S.pts} Punkte · ${Math.floor(t/60)} Min.</div></div>`;
   const ft=n=>`<div class="ft"><span>Helens Religionsheft · Mein Gottesbild – früher und heute</span><span>${n} / 2</span></div>`;
