@@ -566,7 +566,7 @@ R.ergebnis=()=>`${kick('','Für dein Heft')}
 <p>Hier ist alles zusammengestellt, was ihr bearbeitet habt – auf zwei A4-Seiten. Erstellt daraus ein PDF und öffnet es in <b>GoodNotes</b>. Auf Seite 1 ist Platz für dein Gottesbild (Station 3).</p>
 <div class="exp"><button class="btn gold" id="mkpdf">PDF erstellen</button><span class="hint" id="pdfst"></span></div>
 <div class="prev" id="prev"></div>
-<div class="note"><b>So kommt das PDF in GoodNotes:</b> „In GoodNotes öffnen“ tippen → im Teilen-Menü <b>GoodNotes</b> wählen → „Als neues Dokument importieren“ oder in dein Reli-Heft einfügen.</div>
+<div class="note"><b>So kommt das PDF in dein GoodNotes-Heft:</b> „PDF herunterladen“ tippen (landet in Dateien → Downloads) → in GoodNotes dein Reli-Heft öffnen und zur passenden Trennseite blättern → oben rechts <b>+</b> → <b>„Importieren“</b> → PDF auswählen → „Öffnen“. Die Seiten erscheinen direkt hinter der Trennseite.</div>
 ${nav(`<button class="reset" onclick="resetAll(this)">Neues Team starten</button>`)}`;
 H.ergebnis=()=>{S.done.ergebnis=true;save();upd();
   const pages=resultPages();const pv=document.getElementById('prev');
@@ -593,7 +593,7 @@ async function makePdf(){const st=document.getElementById('pdfst'),b=document.ge
     const name='Helens_Religionsheft_'+(S.team||'Team').replace(/[^A-Za-z0-9ÄÖÜäöüß]+/g,'_')+'.pdf';
     PDF=new File([imagePdf(jpgs)],name,{type:'application/pdf'});
     st.textContent='';
-    b.outerHTML=`<button class="btn gold" id="share">In GoodNotes öffnen</button><button class="btn ghost" id="dl">PDF herunterladen</button>`;
+    b.outerHTML=`<button class="btn gold" id="dl">PDF herunterladen</button><button class="btn ghost" id="share">Teilen …</button>`;
     const sh=document.getElementById('share');
     if(navigator.canShare&&navigator.canShare({files:[PDF]})){sh.onclick=()=>navigator.share({files:[PDF],title:'Helens Religionsheft'}).catch(()=>{})}
     else sh.remove();

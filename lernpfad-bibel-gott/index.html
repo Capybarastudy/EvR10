@@ -819,7 +819,7 @@ R.ergebnis=()=>`<span class="kicker">${I.pdf}Für dein Heft</span><h1 style="mar
 <p>Hier ist alles zusammengestellt, was ihr bearbeitet habt – Teil 1 und Teil 2 auf je einer A4-Seite. Ihr könnt das PDF jederzeit erstellen, z. B. schon am Ende von Teil 1.</p>
 <div class="exp"><button class="btn gold" id="mkpdf">${I.pdf} PDF erstellen</button><span class="hint" id="pdfst"></span></div>
 <div class="prev" id="prev"></div>
-<div class="note"><b>So kommt das PDF in GoodNotes:</b> „In GoodNotes öffnen“ tippen → im Teilen-Menü <b>GoodNotes</b> wählen → als neues Dokument importieren oder in dein Reli-Heft einfügen.</div>
+<div class="note"><b>So kommt das PDF in dein GoodNotes-Heft:</b> „PDF herunterladen“ tippen (landet in Dateien → Downloads) → in GoodNotes dein Reli-Heft öffnen und zur passenden Trennseite blättern → oben rechts <b>+</b> → <b>„Importieren“</b> → PDF auswählen → „Öffnen“. Die Seiten erscheinen direkt hinter der Trennseite.</div>
 <div class="nav"><button class="btn ghost" onclick="go('karte')">${I.map} Karte</button><button class="reset" onclick="resetAll(this)">Neues Team starten</button></div>`;
 H.ergebnis=()=>{const pv=document.getElementById('prev');const w=Math.min(pv.clientWidth,794),sc=w/794;
   pv.innerHTML=resultPages().map(h=>`<div class="sc" style="width:${794*sc}px;height:${1123*sc}px">${h}</div>`).join('');
@@ -837,7 +837,7 @@ async function makePdf(){const st=document.getElementById('pdfst'),b=document.ge
     cap.innerHTML='';
     PDF=new File([imagePdf(jpgs)],'Lernpfad_Bibel_Gott_'+(S.team||'Team').replace(/[^A-Za-z0-9ÄÖÜäöüß]+/g,'_')+'.pdf',{type:'application/pdf'});
     st.textContent='';
-    b.outerHTML=`<button class="btn gold" id="share">In GoodNotes öffnen</button><button class="btn ghost" id="dl">PDF herunterladen</button>`;
+    b.outerHTML=`<button class="btn gold" id="dl">PDF herunterladen</button><button class="btn ghost" id="share">Teilen …</button>`;
     const sh=document.getElementById('share');
     if(navigator.canShare&&navigator.canShare({files:[PDF]}))sh.onclick=()=>navigator.share({files:[PDF],title:'Lernpfad – Wie spricht die Bibel von Gott?'}).catch(()=>{});else sh.remove();
     document.getElementById('dl').onclick=()=>{const u=URL.createObjectURL(PDF);const a=document.createElement('a');a.href=u;a.download=PDF.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)};
